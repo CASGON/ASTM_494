@@ -2,39 +2,54 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ASTM C494 - Reductores de Agua | FormMatterPrime</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
 <script type="importmap">
 { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
 </script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --fmp-green: #39ff14;
+    --fmp-green-light: #baff72;
+    --fmp-black: #050505;
+    --pad-x: clamp(14px, 3vw, 20px);
+    --gap: clamp(16px, 2.5vw, 25px);
+  }
+
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
   body {
-    background-color: #050505;
+    background-color: var(--fmp-black);
     color: #e0e0e0;
-    font-family: 'Inter', sans-serif;
-    padding: 40px 20px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    padding: clamp(20px, 4vw, 40px) var(--pad-x);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     background-image:
       linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-size: 40px 40px, 40px 40px;
   }
 
-  .container { max-width: 1100px; width: 100%; }
+  .container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
-  /* ================= HEADER CON LOGO 3D REAL ================= */
+  /* ================= HEADER ================= */
   .header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    padding-bottom: 25px;
-    margin-bottom: 45px;
-    border-bottom: 2px solid #39ff14;
+    gap: clamp(20px, 4vw, 40px);
+    padding-bottom: clamp(20px, 3vw, 30px);
+    margin-bottom: clamp(30px, 5vw, 45px);
+    border-bottom: 2px solid var(--fmp-green);
     position: relative;
     flex-wrap: wrap;
   }
@@ -47,14 +62,14 @@
     transform: translateX(-50%);
     width: 100px;
     height: 4px;
-    background: #39ff14;
-    box-shadow: 0 0 15px #39ff14;
+    background: var(--fmp-green);
+    box-shadow: 0 0 15px var(--fmp-green);
     border-radius: 2px;
   }
 
   .logo-3d-wrap {
-    width: 200px;
-    height: 200px;
+    width: clamp(140px, 22vw, 200px);
+    height: clamp(140px, 22vw, 200px);
     flex-shrink: 0;
     position: relative;
     filter: drop-shadow(0 0 15px rgba(57, 255, 20, 0.5));
@@ -63,61 +78,67 @@
   #logo-3d-scene { width: 100%; height: 100%; }
   #logo-3d-scene canvas { display: block; }
 
-  .header-text { text-align: left; }
-
-  .header h1 {
-    font-size: 2.6rem;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: -0.03em;
-    margin-bottom: 6px;
-    line-height: 1.1;
+  .header-text {
+    text-align: left;
+    flex: 1 1 320px;
+    min-width: 0;
   }
 
-  .header h1 span {
-    color: #39ff14;
-    text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
-  }
-
-  .header .brand-name {
-    font-size: 0.85rem;
-    color: #39ff14;
+  .brand-name {
+    font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+    color: var(--fmp-green);
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 10px;
-    opacity: 0.8;
+    opacity: 0.85;
+  }
+
+  .header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.6rem);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    line-height: 1.15;
+    overflow-wrap: break-word;
+  }
+
+  .header h1 span {
+    color: var(--fmp-green);
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
   }
 
   .header p {
-    font-size: 1rem;
+    font-size: clamp(0.88rem, 1.5vw, 1rem);
     color: #a0a0a0;
     font-weight: 300;
-    max-width: 700px;
     line-height: 1.6;
+    max-width: 700px;
   }
 
-  /* ================= GRID TARJETAS ================= */
+  /* ================= GRID ================= */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-    margin-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: var(--gap);
+    margin-bottom: clamp(30px, 5vw, 50px);
   }
 
   .card {
     background: #0a0a0a;
     border: 1px solid rgba(57, 255, 20, 0.2);
     border-radius: 12px;
-    padding: 25px;
+    padding: clamp(18px, 3vw, 25px);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-width: 0;
   }
 
   .card:hover {
     transform: translateY(-5px);
-    border-color: #39ff14;
+    border-color: var(--fmp-green);
     box-shadow: 0 10px 30px rgba(57, 255, 20, 0.15);
   }
 
@@ -126,13 +147,13 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 3px;
-    background: linear-gradient(90deg, transparent, #39ff14, transparent);
+    background: linear-gradient(90deg, transparent, var(--fmp-green), transparent);
     opacity: 0.5;
   }
 
   .card-diagram {
     width: 100%;
-    height: 140px;
+    aspect-ratio: 320 / 160;
     margin-bottom: 18px;
     background: #060606;
     border: 1px solid rgba(57, 255, 20, 0.1);
@@ -140,15 +161,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 8px;
+    overflow: hidden;
   }
 
-  .card-diagram svg { width: 100%; height: 100%; }
+  .card-diagram svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 
   .card h3 {
-    font-size: 1.3rem;
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
     font-weight: 800;
-    color: #baff72;
+    color: var(--fmp-green-light);
     margin-bottom: 15px;
     display: flex;
     align-items: center;
@@ -157,26 +183,28 @@
   }
 
   .card h3 .badge {
-    font-size: 0.75rem;
+    font-size: clamp(0.68rem, 1.2vw, 0.75rem);
     background: rgba(57, 255, 20, 0.15);
-    color: #39ff14;
+    color: var(--fmp-green);
     padding: 4px 10px;
     border-radius: 20px;
     border: 1px solid rgba(57, 255, 20, 0.3);
     font-weight: 600;
+    white-space: nowrap;
   }
 
   .card p {
-    font-size: 0.92rem;
+    font-size: clamp(0.85rem, 1.4vw, 0.92rem);
     line-height: 1.6;
     color: #cccccc;
     margin-bottom: 15px;
+    overflow-wrap: break-word;
   }
 
   .card .label {
     font-weight: 700;
-    color: #39ff14;
-    font-size: 0.78rem;
+    color: var(--fmp-green);
+    font-size: clamp(0.7rem, 1.2vw, 0.78rem);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 6px;
@@ -186,102 +214,133 @@
   .card ul { list-style: none; margin-bottom: 12px; }
 
   .card ul li {
-    font-size: 0.88rem;
+    font-size: clamp(0.82rem, 1.35vw, 0.88rem);
     color: #b0b0b0;
     margin-bottom: 7px;
     padding-left: 15px;
     position: relative;
+    overflow-wrap: break-word;
   }
 
   .card ul li::before {
     content: '▹';
     position: absolute;
     left: 0;
-    color: #39ff14;
+    color: var(--fmp-green);
   }
 
   /* ================= TABLA ================= */
-  .table-section { margin-top: 30px; }
+  .table-section { margin-top: clamp(30px, 5vw, 50px); }
 
   .table-section h2 {
-    font-size: 1.7rem;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
     font-weight: 800;
     color: #ffffff;
     margin-bottom: 10px;
     text-align: center;
+    line-height: 1.2;
+    overflow-wrap: break-word;
   }
 
-  .table-section h2 span { color: #39ff14; }
+  .table-section h2 span { color: var(--fmp-green); }
 
   .table-section > p {
     text-align: center;
     color: #a0a0a0;
     margin-bottom: 30px;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
   }
 
   .table-container {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border-radius: 12px;
     border: 1px solid rgba(57, 255, 20, 0.2);
     background: #0a0a0a;
     box-shadow: 0 0 30px rgba(57, 255, 20, 0.05);
   }
 
-  table { width: 100%; border-collapse: collapse; min-width: 800px; }
+  .table-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  .table-container::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 0 0 12px 12px;
+  }
+  .table-container::-webkit-scrollbar-thumb {
+    background: rgba(57, 255, 20, 0.4);
+    border-radius: 4px;
+  }
+  .table-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(57, 255, 20, 0.7);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+  }
 
   th, td {
-    padding: 18px 20px;
+    padding: clamp(12px, 2vw, 18px) clamp(14px, 2vw, 20px);
     text-align: left;
     border-bottom: 1px solid #1a1a1a;
+    overflow-wrap: break-word;
   }
 
   th {
     background: #111111;
-    color: #39ff14;
+    color: var(--fmp-green);
     font-weight: 700;
-    font-size: 0.82rem;
+    font-size: clamp(0.72rem, 1.3vw, 0.82rem);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    border-bottom: 2px solid #39ff14;
+    border-bottom: 2px solid var(--fmp-green);
+    white-space: nowrap;
   }
 
-  td { font-size: 0.92rem; line-height: 1.5; color: #d0d0d0; vertical-align: top; }
+  td {
+    font-size: clamp(0.82rem, 1.35vw, 0.92rem);
+    line-height: 1.5;
+    color: #d0d0d0;
+    vertical-align: top;
+  }
 
   tr:hover td { background: rgba(57, 255, 20, 0.03); }
 
   .effect-warning { color: #ff4d4d; font-weight: 600; }
   .effect-neutral { color: #ffaa00; font-weight: 500; }
-  .effect-positive { color: #39ff14; font-weight: 600; }
+  .effect-positive { color: var(--fmp-green); font-weight: 600; }
 
   .type-icon {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 24px;
     height: 24px;
     vertical-align: middle;
     margin-right: 8px;
     border-radius: 4px;
-    text-align: center;
-    line-height: 24px;
     font-weight: 900;
     font-size: 0.75rem;
     color: #000;
+    flex-shrink: 0;
   }
-  .icon-a { background: #39ff14; }
+  .icon-a { background: var(--fmp-green); }
   .icon-d { background: #ffaa00; }
   .icon-e { background: #ff4d4d; color: #fff; }
 
-  /* ================= SECCIÓN XR / QR ================= */
+  /* ================= SECCIÓN XR ================= */
   .xr-access-section {
-    margin-top: 50px;
-    padding: 40px 30px;
+    margin-top: clamp(30px, 5vw, 50px);
+    padding: clamp(25px, 4vw, 40px) clamp(18px, 3vw, 30px);
     background: #0a0a0a;
     border: 1px solid rgba(57, 255, 20, 0.3);
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: clamp(25px, 4vw, 40px);
     flex-wrap: wrap;
     position: relative;
     overflow: hidden;
@@ -293,15 +352,20 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 3px;
-    background: linear-gradient(90deg, transparent, #39ff14, transparent);
+    background: linear-gradient(90deg, transparent, var(--fmp-green), transparent);
     opacity: 0.7;
   }
 
-  .xr-info { text-align: left; max-width: 500px; }
+  .xr-info {
+    text-align: left;
+    flex: 1 1 320px;
+    max-width: 500px;
+    min-width: 0;
+  }
 
   .xr-info .xr-label {
-    font-size: 0.75rem;
-    color: #39ff14;
+    font-size: clamp(0.68rem, 1.2vw, 0.75rem);
+    color: var(--fmp-green);
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -310,17 +374,18 @@
   }
 
   .xr-info h2 {
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 2.8vw, 1.6rem);
     font-weight: 800;
     color: #ffffff;
     margin-bottom: 15px;
-    line-height: 1.2;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
-  .xr-info h2 span { color: #39ff14; }
+  .xr-info h2 span { color: var(--fmp-green); }
 
   .xr-info p {
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
     color: #b0b0b0;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -330,21 +395,22 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 24px;
-    background: #39ff14;
+    padding: 12px clamp(16px, 3vw, 24px);
+    background: var(--fmp-green);
     color: #020302;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: clamp(0.78rem, 1.4vw, 0.9rem);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 4px;
     box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
     transition: all 0.3s ease;
+    white-space: nowrap;
   }
 
   .xr-link:hover {
-    background: #baff72;
+    background: var(--fmp-green-light);
     box-shadow: 0 0 35px rgba(57, 255, 20, 0.8);
     transform: translateY(-2px);
   }
@@ -353,11 +419,18 @@
     width: 18px;
     height: 18px;
     fill: #020302;
+    flex-shrink: 0;
+  }
+
+  .qr-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
   }
 
   .qr-wrap {
-    flex-shrink: 0;
-    padding: 15px;
+    padding: clamp(10px, 1.5vw, 15px);
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 0 25px rgba(57, 255, 20, 0.4);
@@ -365,42 +438,62 @@
   }
 
   .qr-wrap img {
-    width: 180px;
-    height: 180px;
+    width: clamp(130px, 20vw, 180px);
+    height: clamp(130px, 20vw, 180px);
     display: block;
   }
 
   .qr-caption {
     text-align: center;
-    font-size: 0.7rem;
-    color: #39ff14;
+    font-size: clamp(0.62rem, 1.1vw, 0.7rem);
+    color: var(--fmp-green);
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-top: 10px;
   }
 
+  /* ================= FOOTER ================= */
   .footer {
-    margin-top: 50px;
+    margin-top: clamp(30px, 5vw, 50px);
     text-align: center;
     padding-top: 25px;
     border-top: 1px solid rgba(57, 255, 20, 0.1);
     color: #666;
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+    line-height: 1.6;
   }
 
-  .footer strong { color: #39ff14; }
+  .footer strong { color: var(--fmp-green); }
 
-  @media (max-width: 768px) {
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 900px) {
     .header { flex-direction: column; text-align: center; }
-    .header-text { text-align: center; }
-    .header h1 { font-size: 1.9rem; }
-    .logo-3d-wrap { width: 160px; height: 160px; }
+    .header-text { text-align: center; flex: 1 1 auto; }
+    .header p { margin: 0 auto; }
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 20px 14px; }
     .grid { grid-template-columns: 1fr; }
-    th, td { padding: 12px 15px; font-size: 0.82rem; }
-    .xr-access-section { flex-direction: column; text-align: center; padding: 30px 20px; }
+    .table-section h2 { font-size: 1.25rem; }
+    .xr-access-section { flex-direction: column; text-align: center; padding: 25px 18px; }
     .xr-info { text-align: center; }
-    .qr-wrap img { width: 150px; height: 150px; }
+    .xr-link { width: 100%; justify-content: center; }
+  }
+
+  @media (max-width: 420px) {
+    .card h3 { font-size: 1rem; }
+    .card h3 .badge { font-size: 0.65rem; padding: 3px 8px; }
+    .header h1 { font-size: 1.4rem; }
+  }
+
+  /* Preferencia de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
 </head>
@@ -408,7 +501,7 @@
 
 <div class="container">
 
-  <!-- ================= HEADER CON LOGO 3D REAL ================= -->
+  <!-- ================= HEADER ================= -->
   <div class="header">
     <div class="logo-3d-wrap">
       <div id="logo-3d-scene"></div>
@@ -421,33 +514,39 @@
     </div>
   </div>
 
-  <!-- ================= TARJETAS CON DIAGRAMAS ================= -->
+  <!-- ================= TARJETAS ================= -->
   <div class="grid">
 
     <!-- TIPO A -->
     <div class="card">
       <div class="card-diagram">
-        <svg viewBox="0 0 300 120">
-          <text x="10" y="15" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">TIPO A</text>
-          <circle cx="40" cy="60" r="10" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-          <circle cx="65" cy="75" r="10" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-          <circle cx="55" cy="45" r="10" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-          <circle cx="80" cy="55" r="10" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-          <circle cx="95" cy="70" r="10" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-          <circle cx="45" cy="90" r="10" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-          <circle cx="110" cy="50" r="10" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-          <circle cx="75" cy="90" r="10" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-          <text x="140" y="65" fill="#39ff14" font-family="Inter" font-size="20" font-weight="900">→</text>
-          <circle cx="180" cy="60" r="10" fill="none" stroke="#baff72" stroke-width="2"/>
-          <circle cx="200" cy="75" r="10" fill="none" stroke="#baff72" stroke-width="2"/>
-          <circle cx="195" cy="45" r="10" fill="none" stroke="#baff72" stroke-width="2"/>
-          <circle cx="215" cy="55" r="10" fill="none" stroke="#baff72" stroke-width="2"/>
-          <circle cx="230" cy="70" r="10" fill="none" stroke="#baff72" stroke-width="2"/>
-          <circle cx="185" cy="90" r="10" fill="none" stroke="#baff72" stroke-width="2"/>
-          <circle cx="245" cy="50" r="10" fill="none" stroke="#baff72" stroke-width="2"/>
-          <circle cx="215" cy="90" r="10" fill="none" stroke="#baff72" stroke-width="2"/>
-          <text x="270" y="65" fill="#baff72" font-family="Inter" font-size="9" font-weight="700">-5% AGUA</text>
-          <text x="180" y="110" fill="#888" font-family="Inter" font-size="8">Partículas más cercanas = mayor resistencia</text>
+        <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <text x="14" y="20" fill="#39ff14" font-family="Inter, sans-serif" font-size="11" font-weight="700">TIPO A</text>
+          <!-- Partículas dispersas -->
+          <circle cx="30" cy="80" r="9" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="55" cy="95" r="9" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="45" cy="65" r="9" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="70" cy="75" r="9" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="85" cy="90" r="9" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="35" cy="110" r="9" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="100" cy="70" r="9" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="65" cy="110" r="9" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <!-- Flecha -->
+          <text x="130" y="88" fill="#39ff14" font-family="Inter, sans-serif" font-size="22" font-weight="900">→</text>
+          <!-- Partículas compactas -->
+          <circle cx="175" cy="80" r="9" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="195" cy="95" r="9" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="190" cy="65" r="9" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="210" cy="75" r="9" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="225" cy="90" r="9" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="180" cy="110" r="9" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="240" cy="70" r="9" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="210" cy="110" r="9" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <!-- Etiqueta -5% agua -->
+          <text x="260" y="70" fill="#baff72" font-family="Inter, sans-serif" font-size="10" font-weight="700">-5%</text>
+          <text x="260" y="84" fill="#baff72" font-family="Inter, sans-serif" font-size="10" font-weight="700">AGUA</text>
+          <!-- Pie -->
+          <text x="160" y="148" fill="#888" font-family="Inter, sans-serif" font-size="9" text-anchor="middle">Partículas más cercanas = mayor resistencia</text>
         </svg>
       </div>
       <h3>Tipo A <span class="badge">Reductor</span></h3>
@@ -464,21 +563,28 @@
     <!-- TIPO D -->
     <div class="card">
       <div class="card-diagram">
-        <svg viewBox="0 0 300 120">
-          <text x="10" y="15" fill="#ffaa00" font-family="Inter" font-size="10" font-weight="700">TIPO D</text>
-          <line x1="20" y1="60" x2="280" y2="60" stroke="#ffaa00" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <circle cx="40" cy="60" r="5" fill="#ffaa00"/>
-          <text x="30" y="80" fill="#888" font-family="Inter" font-size="8">Inicio</text>
-          <circle cx="140" cy="60" r="5" fill="#ffaa00"/>
-          <text x="120" y="80" fill="#888" font-family="Inter" font-size="8">Fraguado normal</text>
-          <circle cx="240" cy="60" r="5" fill="#39ff14"/>
-          <text x="220" y="80" fill="#39ff14" font-family="Inter" font-size="8">+3.5 h</text>
-          <circle cx="60" cy="30" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
-          <circle cx="90" cy="25" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
-          <circle cx="120" cy="30" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
-          <circle cx="150" cy="25" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
-          <circle cx="180" cy="30" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
-          <text x="60" y="110" fill="#888" font-family="Inter" font-size="8">Ventana amplia de trabajo → llena cada detalle del molde</text>
+        <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <text x="14" y="20" fill="#ffaa00" font-family="Inter, sans-serif" font-size="11" font-weight="700">TIPO D</text>
+          <!-- Línea de tiempo -->
+          <line x1="20" y1="80" x2="300" y2="80" stroke="#ffaa00" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <!-- Marcas -->
+          <circle cx="40" cy="80" r="5" fill="#ffaa00"/>
+          <text x="40" y="100" fill="#888" font-family="Inter, sans-serif" font-size="9" text-anchor="middle">Inicio</text>
+          <circle cx="150" cy="80" r="5" fill="#ffaa00"/>
+          <text x="150" y="100" fill="#888" font-family="Inter, sans-serif" font-size="9" text-anchor="middle">Fraguado</text>
+          <text x="150" y="112" fill="#888" font-family="Inter, sans-serif" font-size="9" text-anchor="middle">normal</text>
+          <circle cx="260" cy="80" r="5" fill="#39ff14"/>
+          <text x="260" y="100" fill="#39ff14" font-family="Inter, sans-serif" font-size="9" text-anchor="middle" font-weight="700">+3.5 h</text>
+          <!-- Partículas dispersas arriba (más tiempo de trabajo) -->
+          <circle cx="60" cy="40" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
+          <circle cx="90" cy="35" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
+          <circle cx="120" cy="40" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
+          <circle cx="150" cy="35" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
+          <circle cx="180" cy="40" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
+          <circle cx="210" cy="35" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
+          <circle cx="240" cy="40" r="6" fill="none" stroke="#ffaa00" stroke-width="1.2"/>
+          <!-- Pie -->
+          <text x="160" y="148" fill="#888" font-family="Inter, sans-serif" font-size="9" text-anchor="middle">Ventana amplia de trabajo → llena cada detalle del molde</text>
         </svg>
       </div>
       <h3>Tipo D <span class="badge">Reductor + Retardante</span></h3>
@@ -495,17 +601,23 @@
     <!-- TIPO E -->
     <div class="card">
       <div class="card-diagram">
-        <svg viewBox="0 0 300 120">
-          <text x="10" y="15" fill="#ff4d4d" font-family="Inter" font-size="10" font-weight="700">TIPO E</text>
-          <line x1="20" y1="60" x2="280" y2="60" stroke="#ff4d4d" stroke-width="1.5"/>
-          <circle cx="40" cy="60" r="5" fill="#ff4d4d"/>
-          <text x="30" y="80" fill="#888" font-family="Inter" font-size="8">Inicio</text>
-          <circle cx="100" cy="60" r="5" fill="#ff4d4d"/>
-          <text x="80" y="80" fill="#ff4d4d" font-family="Inter" font-size="8">Fraguado rápido</text>
-          <path d="M 30 100 Q 80 100 120 40" stroke="#ff4d4d" stroke-width="2" fill="none"/>
-          <path d="M 30 100 Q 150 95 260 60" stroke="#39ff14" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
-          <text x="140" y="35" fill="#ff4d4d" font-family="Inter" font-size="8">+125% a 3 días</text>
-          <text x="180" y="105" fill="#888" font-family="Inter" font-size="8">Curva normal</text>
+        <svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <text x="14" y="20" fill="#ff4d4d" font-family="Inter, sans-serif" font-size="11" font-weight="700">TIPO E</text>
+          <!-- Ejes -->
+          <line x1="40" y1="30" x2="40" y2="130" stroke="#333" stroke-width="1"/>
+          <line x1="40" y1="130" x2="300" y2="130" stroke="#333" stroke-width="1"/>
+          <text x="30" y="35" fill="#555" font-family="Inter, sans-serif" font-size="8" text-anchor="end">Res.</text>
+          <text x="300" y="145" fill="#555" font-family="Inter, sans-serif" font-size="8" text-anchor="end">Tiempo</text>
+          <!-- Curva normal (referencia) -->
+          <path d="M 40 130 Q 150 128 290 90" stroke="#39ff14" stroke-width="1.4" fill="none" stroke-dasharray="4 3"/>
+          <!-- Curva acelerada -->
+          <path d="M 40 130 Q 90 120 140 55" stroke="#ff4d4d" stroke-width="2.2" fill="none"/>
+          <!-- Etiqueta +125% -->
+          <text x="150" y="55" fill="#ff4d4d" font-family="Inter, sans-serif" font-size="10" font-weight="700">+125% a 3 días</text>
+          <!-- Etiqueta curva normal -->
+          <text x="230" y="105" fill="#39ff14" font-family="Inter, sans-serif" font-size="9">Curva normal</text>
+          <!-- Pie -->
+          <text x="160" y="155" fill="#888" font-family="Inter, sans-serif" font-size="9" text-anchor="middle">Desarrollo acelerado de resistencias tempranas</text>
         </svg>
       </div>
       <h3>Tipo E <span class="badge">Reductor + Acelerante</span></h3>
@@ -521,7 +633,7 @@
 
   </div>
 
-  <!-- ================= TABLA COMPARATIVA ================= -->
+  <!-- ================= TABLA ================= -->
   <div class="table-section">
     <h2>Ejemplo Práctico: <span>Esculturas con Moldes Detallados</span></h2>
     <p>Comparativa técnica para la reproducción nítida de detalles finos en moldes de escultura.</p>
@@ -560,7 +672,7 @@
     </div>
   </div>
 
-  <!-- ================= SECCIÓN XR / QR ================= -->
+  <!-- ================= SECCIÓN XR ================= -->
   <div class="xr-access-section">
     <div class="xr-info">
       <div class="xr-label">Experiencia Inmersiva</div>
@@ -571,9 +683,9 @@
         Abrir Experiencia XR
       </a>
     </div>
-    <div>
+    <div class="qr-block">
       <div class="qr-wrap">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fcasgon.github.io%2FBROCHURE%2F&color=000000&bgcolor=FFFFFF&margin=0" alt="Código QR para la experiencia XR de FormMatterPrime">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fcasgon.github.io%2FBROCHURE%2F&color=000000&bgcolor=FFFFFF&margin=0" alt="Código QR para la experiencia XR de FormMatterPrime">
       </div>
       <div class="qr-caption">Escanear para acceder</div>
     </div>
@@ -594,7 +706,7 @@ import * as THREE from 'three';
 
 const container = document.getElementById('logo-3d-scene');
 if (container) {
-  const getSize = () => container.clientWidth || 200;
+  const getSize = () => Math.max(120, container.clientWidth || 200);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(getSize(), getSize(), false);
@@ -736,9 +848,14 @@ if (container) {
   }
   animate();
 
+  // Redimensionado responsivo con debounce
+  let resizeTimeout;
   window.addEventListener('resize', () => {
-    const s = getSize();
-    renderer.setSize(s, s, false);
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const s = getSize();
+      renderer.setSize(s, s, false);
+    }, 100);
   });
 }
 </script>
