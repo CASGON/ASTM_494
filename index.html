@@ -816,7 +816,7 @@
     align-items: center;
     margin-bottom: 25px;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
     padding-bottom: 18px;
     border-bottom: 1px solid rgba(57, 255, 20, 0.15);
   }
@@ -842,6 +842,51 @@
   }
 
   .xr-header h2 span { color: var(--fmp-green); }
+
+  /* QR + CEMEX en header */
+  .xr-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .qr-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .qr-wrap {
+    padding: 8px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+    line-height: 0;
+    transition: all 0.3s ease;
+  }
+
+  .qr-wrap:hover {
+    box-shadow: 0 0 35px rgba(57, 255, 20, 0.7);
+    transform: translateY(-2px);
+  }
+
+  .qr-wrap img {
+    width: 100px;
+    height: 100px;
+    display: block;
+  }
+
+  .qr-caption {
+    text-align: center;
+    font-size: 0.62rem;
+    color: var(--fmp-green);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
 
   /* Logo CEMEX */
   .cemex-brand {
@@ -958,20 +1003,11 @@
     transition: transform 0.5s ease;
   }
 
-  /* Recorta cada lado de la imagen para mostrar un busto distinto */
-  .sculpture-photo.left {
-    object-position: 25% center;
-  }
+  .sculpture-photo.left { object-position: 25% center; }
+  .sculpture-photo.right { object-position: 75% center; }
 
-  .sculpture-photo.right {
-    object-position: 75% center;
-  }
+  .sculpture-card:hover .sculpture-photo { transform: scale(1.05); }
 
-  .sculpture-card:hover .sculpture-photo {
-    transform: scale(1.05);
-  }
-
-  /* Overlay verde/rojo sutil sobre la foto */
   .sculpture-card.with .sculpture-svg::after {
     content: '';
     position: absolute;
@@ -992,7 +1028,6 @@
     z-index: 2;
   }
 
-  /* Fallback SVG cuando no hay imagen */
   .fallback-svg {
     width: 100%;
     height: 100%;
@@ -1048,6 +1083,128 @@
   @keyframes shineBar {
     0%, 100% { filter: brightness(1); }
     50% { filter: brightness(1.4); }
+  }
+
+  /* ═══ REQUISITOS DE USO ═══ */
+  .requirements-section {
+    margin-bottom: 25px;
+    padding: clamp(18px, 3vw, 25px);
+    background: rgba(57, 255, 20, 0.03);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 12px;
+  }
+
+  .requirements-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--fmp-green);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .requirements-title::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: var(--fmp-green);
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--fmp-green);
+  }
+
+  .requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 14px;
+  }
+
+  .req-card {
+    background: #060606;
+    border: 1px solid rgba(57, 255, 20, 0.15);
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .req-card:hover {
+    border-color: rgba(57, 255, 20, 0.5);
+    background: rgba(57, 255, 20, 0.03);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(57, 255, 20, 0.1);
+  }
+
+  .req-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--fmp-green);
+    box-shadow: 0 0 10px var(--fmp-green);
+    opacity: 0.6;
+  }
+
+  .req-card .req-icon {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.5));
+  }
+
+  .req-card .req-device {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--fmp-green-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .req-card .req-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .req-card .req-list li {
+    font-size: 0.78rem;
+    color: #b0b0b0;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .req-card .req-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--fmp-green);
+    font-weight: 700;
+  }
+
+  .req-card .req-list li strong {
+    color: var(--fmp-green-light);
+    font-weight: 700;
+  }
+
+  .req-card .req-list li a {
+    color: var(--fmp-green);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(57, 255, 20, 0.4);
+    transition: all 0.2s ease;
+    word-break: break-word;
+  }
+
+  .req-card .req-list li a:hover {
+    color: var(--fmp-green-light);
+    border-bottom-color: var(--fmp-green-light);
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
   }
 
   .xr-cta {
@@ -1136,7 +1293,7 @@
 
   .xr-link.secondary svg { fill: var(--fmp-green); }
 
-  /* Animaciones escultura (para el SVG fallback) */
+  /* Animaciones escultura (para SVG fallback) */
   @keyframes surfaceShine {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
@@ -1193,6 +1350,7 @@
     .balance-bar { padding: 12px 14px; }
     .balance-bar .balance-status { min-width: auto; font-size: 0.75rem; }
     .xr-header { flex-direction: column; align-items: flex-start; }
+    .xr-header-right { width: 100%; justify-content: center; }
     .cemex-brand { width: 100%; justify-content: center; }
   }
 
@@ -1229,7 +1387,6 @@
 
   <!-- ================= TARJETAS ================= -->
   <div class="grid">
-
     <div class="card">
       <div class="card-diagram">
         <svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -1324,7 +1481,6 @@
         <li>Pavimentos de apertura rápida</li>
       </ul>
     </div>
-
   </div>
 
   <!-- ================= SIMULADOR ================= -->
@@ -1549,7 +1705,6 @@ de fluidez es marginal: saturación.</div>
       </div>
       <div class="formula-example">Zona óptima: <span class="result">0.8% – 1.4%</span> · Saturación: <span class="result">&gt;1.8%</span></div>
     </div>
-
   </div>
 
   <!-- ================= EJEMPLOS VISUALES ================= -->
@@ -1558,7 +1713,6 @@ de fluidez es marginal: saturación.</div>
     <p>Las tres estrategias clásicas de dosificación con reductores de agua. Compara cómo cambian fluidez, resistencia y costo.</p>
 
     <div class="examples-grid">
-
       <div class="example-card">
         <div class="ex-title">1. Solo agregar plastificante</div>
         <div class="example-svg">
@@ -1651,7 +1805,6 @@ de fluidez es marginal: saturación.</div>
           <span class="ex-tag cost">$</span>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -1662,15 +1815,23 @@ de fluidez es marginal: saturación.</div>
         <div class="xr-label">Experiencia Inmersiva — Superplastificantes</div>
         <h2>Detalle de <span>Escultura Arquitectónica</span> en XR</h2>
       </div>
-      <div class="cemex-brand">
-        <svg class="cemex-logo-svg" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="10,4 28,4 18,36 0,36" fill="#e30613"/>
-          <polygon points="32,4 50,4 40,36 22,36" fill="#003da5"/>
-          <text x="58" y="28" font-family="Inter, sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing="-0.8">CEMEX</text>
-        </svg>
-        <div class="cemex-brand-text">
-          <span class="cb-main">CEMEX</span>
-          <span class="cb-sub">Colombia</span>
+      <div class="xr-header-right">
+        <div class="qr-block">
+          <div class="qr-wrap">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fcasgon.github.io%2FBROCHURE%2F&color=000000&bgcolor=FFFFFF&margin=0" alt="Código QR para la experiencia XR de FormMatterPrime">
+          </div>
+          <div class="qr-caption">Escanear XR</div>
+        </div>
+        <div class="cemex-brand">
+          <svg class="cemex-logo-svg" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="10,4 28,4 18,36 0,36" fill="#e30613"/>
+            <polygon points="32,4 50,4 40,36 22,36" fill="#003da5"/>
+            <text x="58" y="28" font-family="Inter, sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing="-0.8">CEMEX</text>
+          </svg>
+          <div class="cemex-brand-text">
+            <span class="cb-main">CEMEX</span>
+            <span class="cb-sub">Colombia</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1704,7 +1865,6 @@ de fluidez es marginal: saturación.</div>
     </div>
 
     <div class="sculpture-compare">
-
       <!-- CON ADITIVO -->
       <div class="sculpture-card with">
         <span class="sculpture-badge">Con aditivo</span>
@@ -1774,7 +1934,54 @@ de fluidez es marginal: saturación.</div>
           <span style="color:#ff4d4d;">35%</span>
         </div>
       </div>
+    </div>
 
+    <!-- ═══ REQUISITOS DE USO ═══ -->
+    <div class="requirements-section">
+      <div class="requirements-title">Requisitos para usar la Experiencia XR</div>
+      <div class="requirements-grid">
+
+        <!-- PC -->
+        <div class="req-card">
+          <span class="req-icon">💻</span>
+          <div class="req-device">PC / Escritorio</div>
+          <ul class="req-list">
+            <li>Navegador <strong>Chrome</strong> o <strong>Edge</strong> actualizado</li>
+            <li>Instalar el emulador oficial de realidad extendida</li>
+            <li>
+              <a href="https://chromewebstore.google.com/detail/immersive-web-emulator/cgffilbpcibhmcfbgggfhfolhkfbhmik?pli=1" target="_blank" rel="noopener noreferrer">
+                Immersive Web Emulator (Chrome Web Store)
+              </a>
+            </li>
+            <li>Permitir acceso a la cámara si se solicita</li>
+          </ul>
+        </div>
+
+        <!-- Android -->
+        <div class="req-card">
+          <span class="req-icon">🤖</span>
+          <div class="req-device">Android</div>
+          <ul class="req-list">
+            <li>Navegador <strong>Chrome</strong> o <strong>Firefox</strong> actualizado</li>
+            <li><strong>Cámara activada</strong> en permisos del navegador</li>
+            <li>Activar <strong>ARCore</strong> si el dispositivo lo soporta</li>
+            <li>Buena iluminación para el tracking AR</li>
+          </ul>
+        </div>
+
+        <!-- iOS -->
+        <div class="req-card">
+          <span class="req-icon">🍎</span>
+          <div class="req-device">iOS</div>
+          <ul class="req-list">
+            <li>Usar <strong>Safari</strong> o <strong>Chrome</strong> actualizado</li>
+            <li>Dispositivo con <strong>cámara AR/XR</strong> (iPhone 6s+)</li>
+            <li>Permitir acceso a la <strong>cámara</strong> al navegador</li>
+            <li>Compatible con WebXR cuando esté disponible</li>
+          </ul>
+        </div>
+
+      </div>
     </div>
 
     <div class="xr-cta">
@@ -2202,61 +2409,4 @@ if (container) {
     let fisico = [];
     fisico.push(`<li><strong>Relación a/c:</strong> ${ac.toFixed(2)} — ${ac < 0.40 ? 'Baja (alta resistencia, baja permeabilidad)' : ac < 0.50 ? 'Moderada (equilibrio)' : 'Alta (mayor trabajabilidad)'}</li>`);
     fisico.push(`<li><strong>Reología:</strong> ${fluidez > 70 ? 'Fluida, alta deformabilidad' : fluidez > 40 ? 'Plástica, cohesiva' : 'Viscosa, poco deformable'}</li>`);
-    fisico.push(`<li><strong>Resistencia estimada:</strong> ${Math.round(resistencia * 3.5)} kg/cm² a 28 días (Ley de Abrams)</li>`);
-    fisico.push(`<li><strong>Exudación:</strong> ${exudacion > 60 ? 'Alta (riesgo de sangrado)' : exudacion > 30 ? 'Media (estable)' : 'Baja (cohesiva)'}</li>`);
-    fisico.push(`<li><strong>Porosidad:</strong> ${ac < 0.40 ? 'Baja (~10%)' : ac < 0.50 ? 'Media (~14%)' : 'Alta (~18%)'}</li>`);
-    fisicoList.innerHTML = fisico.join('');
-
-    let aplic = [];
-    let tiempoTrabajo;
-    if (currentType === 'D') tiempoTrabajo = '150–210 min';
-    else if (currentType === 'E') tiempoTrabajo = '30–50 min';
-    else tiempoTrabajo = '60–90 min';
-    aplic.push(`<li><strong>Tiempo de trabajo:</strong> ${tiempoTrabajo}</li>`);
-
-    let desencofrado;
-    if (currentType === 'E' || temp > 25) desencofrado = '12–18 h';
-    else if (currentType === 'D' || temp < 15) desencofrado = '36–48 h';
-    else desencofrado = '24 h';
-    aplic.push(`<li><strong>Desencofrado:</strong> ${desencofrado}</li>`);
-
-    let colocacion;
-    if (fluidez > 80) colocacion = 'Autonivelante, sin vibrado';
-    else if (fluidez > 50) colocacion = 'Vibrado ligero';
-    else colocacion = 'Vibrado intenso';
-    aplic.push(`<li><strong>Colocación:</strong> ${colocacion}</li>`);
-
-    aplic.push(`<li><strong>Curado:</strong> ${temp < 10 ? 'Con protección térmica, 10 días' : 'Húmedo, 7 días mínimo'}</li>`);
-    aplic.push(`<li><strong>Bombeabilidad:</strong> ${bombeo > 70 ? 'Excelente' : bombeo > 40 ? 'Buena' : 'Limitada'}</li>`);
-    aplicList.innerHTML = aplic.join('');
-  }
-
-  waterSlider.addEventListener('input', update);
-  aditivoSlider.addEventListener('input', update);
-  acSlider.addEventListener('input', update);
-  tempSlider.addEventListener('input', update);
-
-  typeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      typeButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentType = btn.dataset.type;
-      applyValues(ASTM_OPTIMOS[currentType]);
-    });
-  });
-
-  presetButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      presetButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentPreset = btn.dataset.preset;
-      applyValues(PRESETS[currentPreset]);
-    });
-  });
-
-  update();
-})();
-</script>
-
-</body>
-</html>
+    fisico.push(`<li><strong>Resistencia estimada:</strong> ${Math.round(resistencia * 3.5)} kg/cm² a
