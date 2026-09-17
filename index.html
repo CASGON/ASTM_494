@@ -25,7 +25,7 @@
     background-color: var(--fmp-black);
     color: #e0e0e0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    padding: clamp(20px, 4vw, 40px) var(--pad-x);
+    padding: 0 var(--pad-x) clamp(20px, 4vw, 40px);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -35,7 +35,187 @@
     background-size: 40px 40px, 40px 40px;
   }
 
-  .container { max-width: 1100px; width: 100%; margin: 0 auto; }
+  .container { max-width: 1100px; width: 100%; margin: 0 auto; padding-top: clamp(20px, 4vw, 40px); }
+
+  /* ═══════════════════════════════════════════════════════════
+     ÍNDICE DE NAVEGACIÓN — 3 BARRAS DESPLEGABLES
+     ═══════════════════════════════════════════════════════════ */
+  .nav-index {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin: 0 calc(-1 * var(--pad-x)) clamp(20px, 3vw, 30px);
+    padding: 12px var(--pad-x);
+    background: rgba(5, 5, 5, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .nav-index::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--fmp-green), transparent);
+    opacity: 0.6;
+  }
+
+  .nav-bars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .nav-bar {
+    position: relative;
+    background: #0a0a0a;
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .nav-bar:hover {
+    border-color: rgba(57, 255, 20, 0.6);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
+  }
+
+  .nav-bar.active {
+    border-color: var(--fmp-green);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+  }
+
+  .nav-bar-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    color: #e0e0e0;
+    font-family: inherit;
+    font-size: clamp(0.72rem, 1.3vw, 0.85rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .nav-bar-trigger:hover { color: var(--fmp-green-light); }
+  .nav-bar.active .nav-bar-trigger { color: var(--fmp-green); }
+
+  .nav-bar-trigger .trigger-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    color: var(--fmp-green);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-bar-trigger .trigger-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
+  .nav-bar.active .nav-bar-trigger .trigger-icon {
+    transform: rotate(90deg);
+  }
+
+  .nav-bar-trigger .trigger-label {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-bar-trigger .trigger-arrow {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .nav-bar.active .nav-bar-trigger .trigger-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+
+  /* Menú desplegable */
+  .nav-bar-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 0 solid rgba(57, 255, 20, 0.15);
+  }
+
+  .nav-bar.active .nav-bar-menu {
+    max-height: 320px;
+    border-top-width: 1px;
+  }
+
+  .nav-bar-menu ul {
+    list-style: none;
+    padding: 6px 0;
+  }
+
+  .nav-bar-menu ul li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px 9px 22px;
+    color: #b0b0b0;
+    font-size: clamp(0.72rem, 1.2vw, 0.82rem);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-bar-menu ul li a:hover {
+    color: var(--fmp-green-light);
+    background: rgba(57, 255, 20, 0.05);
+    border-left-color: var(--fmp-green);
+    padding-left: 26px;
+  }
+
+  .nav-bar-menu ul li a::before {
+    content: '▸';
+    color: var(--fmp-green);
+    font-weight: 700;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .nav-bars {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .nav-bar-trigger {
+      padding: 10px 14px;
+      font-size: 0.72rem;
+    }
+    .nav-bar.active .nav-bar-menu {
+      max-height: 260px;
+    }
+  }
 
   /* ================= HEADER ================= */
   .header {
@@ -114,6 +294,11 @@
     font-weight: 300;
     line-height: 1.6;
     max-width: 700px;
+  }
+
+  /* ================= SECCIONES (anclas) ================= */
+  .section-anchor {
+    scroll-margin-top: 130px;
   }
 
   /* ================= GRID ================= */
@@ -632,7 +817,7 @@
     font-weight: 700;
   }
 
-  /* ================= EJEMPLOS VISUALES ASTM ================= */
+  /* ================= EJEMPLOS VISUALES ================= */
   .examples-section {
     margin-top: clamp(30px, 5vw, 50px);
     background: #0a0a0a;
@@ -720,7 +905,6 @@
 
   .example-svg svg { width: 100%; height: 100%; }
 
-  /* ═══ ANIMACIONES ═══ */
   @keyframes dropFall {
     0% { transform: translateY(-30px) scale(0.5); opacity: 0; }
     30% { opacity: 1; transform: translateY(0) scale(1); }
@@ -765,11 +949,7 @@
     margin-bottom: 10px;
   }
 
-  .example-card .ex-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .example-card .ex-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
   .example-card .ex-tag {
     font-size: 0.68rem;
@@ -843,7 +1023,6 @@
 
   .xr-header h2 span { color: var(--fmp-green); }
 
-  /* Logo CEMEX */
   .cemex-brand {
     display: flex;
     align-items: center;
@@ -862,7 +1041,6 @@
   .cemex-brand-text .cb-main { font-size: 1.05rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
   .cemex-brand-text .cb-sub { font-size: 0.62rem; font-weight: 600; color: #39ff14; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 2px; }
 
-  /* Panel de datos técnicos CEMEX */
   .product-specs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -879,7 +1057,6 @@
   .product-spec .ps-value { font-size: 0.88rem; font-weight: 700; color: #e0e0e0; line-height: 1.35; }
   .product-spec .ps-value.highlight { color: #baff72; font-size: 1rem; }
 
-  /* Comparativa de bustos */
   .sculpture-compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -947,7 +1124,6 @@
 
   .sculpture-svg svg { width: 100%; height: 100%; }
 
-  /* Imágenes de bustos CEMEX */
   .sculpture-photo {
     width: 100%;
     height: 100%;
@@ -983,13 +1159,7 @@
     z-index: 2;
   }
 
-  .fallback-svg {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .fallback-svg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 
   .sculpture-title {
     font-size: 0.88rem;
@@ -1040,7 +1210,6 @@
     50% { filter: brightness(1.4); }
   }
 
-  /* ═══ QR Y REQUISITOS DE USO ═══ */
   .xr-cta-wrapper {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -1088,12 +1257,7 @@
     margin: 0;
   }
 
-  .xr-cta-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+  .xr-cta-buttons { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 
   .xr-link {
     display: inline-flex;
@@ -1136,7 +1300,6 @@
 
   .xr-link.secondary svg { fill: var(--fmp-green); }
 
-  /* Bloque QR */
   .xr-qr-block {
     display: flex;
     flex-direction: column;
@@ -1193,7 +1356,7 @@
 
   .qr-caption strong { color: var(--fmp-green); }
 
-  /* ═══ SECCIÓN DE REQUISITOS POR PLATAFORMA ═══ */
+  /* ═══ SECCIÓN DE REQUISITOS ═══ */
   .requirements-section {
     margin-top: 20px;
     padding: 20px 22px;
@@ -1253,11 +1416,17 @@
   }
 
   .req-card .req-icon svg {
-    width: 22px;
-    height: 22px;
-    fill: var(--fmp-green);
+    width: 26px;
+    height: 26px;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
   }
+
+  .req-card:hover .req-icon svg { transform: scale(1.1); }
+
+  .req-card .req-icon svg.icon-windows { fill: #00A4EF; }
+  .req-card .req-icon svg.icon-android { fill: #3DDC84; }
+  .req-card .req-icon svg.icon-apple { fill: #F2F2F2; }
 
   .req-card .req-icon .req-platform {
     font-size: 0.82rem;
@@ -1301,7 +1470,6 @@
     flex-shrink: 0;
   }
 
-  /* Animaciones escultura (para el SVG fallback) */
   @keyframes surfaceShine {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
@@ -1345,7 +1513,8 @@
   }
 
   @media (max-width: 640px) {
-    body { padding: 20px 14px; }
+    body { padding: 0 14px 20px; }
+    .container { padding-top: 20px; }
     .grid { grid-template-columns: 1fr; }
     .xr-cta { flex-direction: column; text-align: center; }
     .xr-cta-text { text-align: center; }
@@ -1379,10 +1548,73 @@
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════════════════════════
+     ÍNDICE DE NAVEGACIÓN — 3 BARRAS DESPLEGABLES
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="nav-index" aria-label="Índice de navegación">
+  <div class="nav-bars">
+
+    <!-- BARRA 1: FUNDAMENTOS -->
+    <div class="nav-bar" data-bar="1">
+      <button class="nav-bar-trigger" aria-expanded="false">
+        <span class="trigger-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/></svg>
+        </span>
+        <span class="trigger-label">Fundamentos</span>
+        <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="nav-bar-menu">
+        <ul>
+          <li><a href="#tipos">Tipos A, D y E</a></li>
+          <li><a href="#comparativa">Comparativa visual</a></li>
+          <li><a href="#norma">Trazabilidad ASTM C494</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BARRA 2: SIMULACIÓN -->
+    <div class="nav-bar" data-bar="2">
+      <button class="nav-bar-trigger" aria-expanded="false">
+        <span class="trigger-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+        </span>
+        <span class="trigger-label">Simulación</span>
+        <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="nav-bar-menu">
+        <ul>
+          <li><a href="#simulador">Simulador de dosificación</a></li>
+          <li><a href="#formulas">Fórmulas y cálculos</a></li>
+          <li><a href="#ejemplos">Ejemplos visuales</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BARRA 3: EXPERIENCIA XR -->
+    <div class="nav-bar" data-bar="3">
+      <button class="nav-bar-trigger" aria-expanded="false">
+        <span class="trigger-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        </span>
+        <span class="trigger-label">Experiencia XR</span>
+        <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </button>
+      <div class="nav-bar-menu">
+        <ul>
+          <li><a href="#escultura">Comparativa de escultura</a></li>
+          <li><a href="#demo">Acceso a demo XR</a></li>
+          <li><a href="#requisitos">Requisitos por plataforma</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
 <div class="container">
 
   <!-- ================= HEADER ================= -->
-  <div class="header">
+  <div class="header section-anchor" id="tipos">
     <div class="logo-3d-wrap">
       <div id="logo-3d-scene"></div>
     </div>
@@ -1397,7 +1629,7 @@
   <!-- ================= TARJETAS ================= -->
   <div class="grid">
 
-    <div class="card">
+    <div class="card" id="tipo-a">
       <div class="card-diagram">
         <svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <text x="16" y="24" fill="#39ff14" font-family="Inter, sans-serif" font-size="12" font-weight="700">TIPO A</text>
@@ -1434,7 +1666,7 @@
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card" id="tipo-d">
       <div class="card-diagram">
         <svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <text x="16" y="24" fill="#ffaa00" font-family="Inter, sans-serif" font-size="12" font-weight="700">TIPO D</text>
@@ -1466,7 +1698,7 @@
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card" id="tipo-e">
       <div class="card-diagram">
         <svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <text x="16" y="24" fill="#ff4d4d" font-family="Inter, sans-serif" font-size="12" font-weight="700">TIPO E</text>
@@ -1495,7 +1727,7 @@
   </div>
 
   <!-- ================= SIMULADOR ================= -->
-  <div class="simulator-section">
+  <div class="simulator-section section-anchor" id="simulador">
     <h2>Simulador de <span>Dosificación</span></h2>
     <p>Ajusta los parámetros o presiona un preset para cargar los valores óptimos ASTM C494.</p>
 
@@ -1622,7 +1854,7 @@
   </div>
 
   <!-- ================= FÓRMULAS ================= -->
-  <div class="formulas-section">
+  <div class="formulas-section section-anchor" id="formulas">
     <h2>Fórmulas y <span>Trazabilidad ASTM C494</span></h2>
     <p>Cada cálculo del simulador está respaldado por la norma. Aquí te mostramos el origen, la fórmula exacta y un ejemplo.</p>
 
@@ -1720,7 +1952,7 @@ de fluidez es marginal: saturación.</div>
   </div>
 
   <!-- ================= EJEMPLOS VISUALES ================= -->
-  <div class="examples-section">
+  <div class="examples-section section-anchor" id="ejemplos">
     <h2>Ejemplos Visuales <span>ASTM C494 Tipo A, D y E</span></h2>
     <p>Las tres estrategias clásicas de dosificación con reductores de agua. Compara cómo cambian fluidez, resistencia y costo.</p>
 
@@ -1822,8 +2054,8 @@ de fluidez es marginal: saturación.</div>
     </div>
   </div>
 
-  <!-- ================= SECCIÓN XR — ESCULTURA ================= -->
-  <div class="xr-access-section">
+  <!-- ================= SECCIÓN XR ================= -->
+  <div class="xr-access-section section-anchor" id="escultura">
     <div class="xr-header">
       <div class="xr-header-left">
         <div class="xr-label">Experiencia Inmersiva — Superplastificantes</div>
@@ -1846,7 +2078,6 @@ de fluidez es marginal: saturación.</div>
       Una misma escultura, dos resultados. Nuestra demo XR compara el nivel de detalle, acabado superficial y reproducción de texturas finas <strong style="color:#39ff14;">con</strong> y <strong style="color:#ff4d4d;">sin</strong> superplastificante en la mezcla.
     </p>
 
-    <!-- Panel de datos técnicos CEMEX -->
     <div class="product-specs">
       <div class="product-spec">
         <span class="ps-label">Tecnología</span>
@@ -1871,8 +2102,6 @@ de fluidez es marginal: saturación.</div>
     </div>
 
     <div class="sculpture-compare">
-
-      <!-- CON ADITIVO -->
       <div class="sculpture-card with">
         <span class="sculpture-badge">Con aditivo</span>
         <div class="sculpture-svg">
@@ -1893,8 +2122,6 @@ de fluidez es marginal: saturación.</div>
             <path d="M 105 100 Q 100 115 105 130" fill="none" stroke="#39ff14" stroke-width="0.9" class="shine-anim"/>
             <path d="M 195 100 Q 200 115 195 130" fill="none" stroke="#39ff14" stroke-width="0.9" class="shine-anim" style="animation-delay:0.3s"/>
             <path d="M 112 75 Q 150 60 188 75" fill="none" stroke="#39ff14" stroke-width="0.9"/>
-            <path d="M 108 88 Q 150 70 192 88" fill="none" stroke="#39ff14" stroke-width="0.7" class="shine-anim" style="animation-delay:0.6s"/>
-            <ellipse cx="132" cy="92" rx="8" ry="4" fill="#baff72" opacity="0.35" class="shine-anim" style="animation-delay:0.4s"/>
             <text x="150" y="238" fill="#39ff14" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie lisa · Detalle nítido</text>
           </svg>
         </div>
@@ -1907,7 +2134,6 @@ de fluidez es marginal: saturación.</div>
         </div>
       </div>
 
-      <!-- SIN ADITIVO -->
       <div class="sculpture-card without">
         <span class="sculpture-badge">Sin aditivo</span>
         <div class="sculpture-svg">
@@ -1920,7 +2146,7 @@ de fluidez es marginal: saturación.</div>
           <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid meet" class="glow-red fallback-svg" style="display:none;">
             <rect x="70" y="200" width="160" height="30" fill="#1a1a1a" stroke="#ff4d4d" stroke-width="1.5" rx="3"/>
             <text x="150" y="220" fill="#ff4d4d" font-family="Inter" font-size="7" font-weight="600" text-anchor="middle">CONCRETO SIN ADITIVO</text>
-            <ellipse cx="150" cy="120" rx="45" ry="60" fill="#0a0a0a" stroke="#ff4d4d" stroke-width="2" class="grain-anim"/>
+            <ellipse cx="150" cy="120" rx="45" ry="60" fill="#0a0a0a" stroke="#ff4d4d" stroke-width="2"/>
             <ellipse cx="135" cy="108" rx="6" ry="4" fill="#ff4d4d" class="crack-anim"/>
             <ellipse cx="165" cy="108" rx="6" ry="4" fill="#ff4d4d" class="crack-anim" style="animation-delay:0.5s"/>
             <path d="M 150 115 L 146 133 L 154 133 Z" fill="none" stroke="#ff4d4d" stroke-width="1.2"/>
@@ -1928,8 +2154,6 @@ de fluidez es marginal: saturación.</div>
             <circle class="bubble-anim" cx="128" cy="125" r="3.5" fill="none" stroke="#ff4d4d" stroke-width="0.9"/>
             <circle class="bubble-anim" cx="172" cy="135" r="3" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:0.6s"/>
             <circle class="bubble-anim" cx="155" cy="150" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:1.2s"/>
-            <path d="M 120 88 L 124 95 L 119 102" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim"/>
-            <path d="M 180 95 L 176 103 L 181 110" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim" style="animation-delay:0.4s"/>
             <text x="150" y="238" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie rugosa · Burbujas y grietas</text>
           </svg>
         </div>
@@ -1941,11 +2165,9 @@ de fluidez es marginal: saturación.</div>
           <span style="color:#ff4d4d;">35%</span>
         </div>
       </div>
-
     </div>
 
-    <!-- CTA + QR -->
-    <div class="xr-cta-wrapper">
+    <div class="xr-cta-wrapper" id="demo">
       <div class="xr-cta">
         <div class="xr-cta-text">
           <h3>Explora esta escultura en <span>Realidad Extendida</span></h3>
@@ -1963,7 +2185,6 @@ de fluidez es marginal: saturación.</div>
         </div>
       </div>
 
-      <!-- QR RESTAURADO -->
       <div class="xr-qr-block">
         <div class="qr-title">Escanea para acceder</div>
         <div class="qr-wrap">
@@ -1973,18 +2194,19 @@ de fluidez es marginal: saturación.</div>
       </div>
     </div>
 
-    <!-- REQUISITOS DE USO POR PLATAFORMA -->
-    <div class="requirements-section">
+    <!-- REQUISITOS -->
+    <div class="requirements-section section-anchor" id="requisitos">
       <div class="requirements-title">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
         Requisitos para usar la experiencia XR
       </div>
       <div class="requirements-grid">
 
-        <!-- PC -->
         <div class="req-card">
           <div class="req-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+            <svg class="icon-windows" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 5.5l8-1.1V11H3V5.5zM12 4.2l9-1.2v8H12V4.2zM3 12h8v6.6l-8-1.1V12zM12 12h9v9l-9-1.2V12z"/>
+            </svg>
             <span class="req-platform">PC / Escritorio</span>
           </div>
           <div class="req-desc">
@@ -1996,10 +2218,11 @@ de fluidez es marginal: saturación.</div>
           </a>
         </div>
 
-        <!-- Android -->
         <div class="req-card">
           <div class="req-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-1.4-.63-2.96-.99-4.62-.99-1.65 0-3.21.35-4.6.98L5.37 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83l1.84 3.18C3.03 11.03 1.05 13.98.55 17.5h22.9c-.5-3.52-2.48-6.47-5.85-8.02zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+            <svg class="icon-android" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-1.4-.63-2.96-.99-4.62-.99-1.65 0-3.21.35-4.6.98L5.37 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83l1.84 3.18C3.03 11.03 1.05 13.98.55 17.5h22.9c-.5-3.52-2.48-6.47-5.85-8.02zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/>
+            </svg>
             <span class="req-platform">Android</span>
           </div>
           <div class="req-desc">
@@ -2010,10 +2233,11 @@ de fluidez es marginal: saturación.</div>
           </span>
         </div>
 
-        <!-- iOS -->
         <div class="req-card">
           <div class="req-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <svg class="icon-apple" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+            </svg>
             <span class="req-platform">iOS (iPhone / iPad)</span>
           </div>
           <div class="req-desc">
@@ -2220,162 +2444,4 @@ if (container) {
   const tempSlider = document.getElementById('tempSlider');
 
   const waterValue = document.getElementById('waterValue');
-  const aditivoValue = document.getElementById('aditivoValue');
-  const acValue = document.getElementById('acValue');
-  const tempValue = document.getElementById('tempValue');
-
-  const sgWater = document.getElementById('sg-water');
-  const sgAditivo = document.getElementById('sg-aditivo');
-  const sgAc = document.getElementById('sg-ac');
-  const sgTemp = document.getElementById('sg-temp');
-
-  const bars = {
-    fluidez: { fill: document.getElementById('barFluidez'), val: document.getElementById('valFluidez') },
-    viscosidad: { fill: document.getElementById('barViscosidad'), val: document.getElementById('valViscosidad') },
-    fraguado: { fill: document.getElementById('barFraguado'), val: document.getElementById('valFraguado') },
-    resistencia: { fill: document.getElementById('barResistencia'), val: document.getElementById('valResistencia') },
-    exudacion: { fill: document.getElementById('barExudacion'), val: document.getElementById('valExudacion') },
-    detalle: { fill: document.getElementById('barDetalle'), val: document.getElementById('valDetalle') },
-    bombeo: { fill: document.getElementById('barBombeo'), val: document.getElementById('valBombeo') }
-  };
-
-  const appList = document.getElementById('appList');
-  const fisicoList = document.getElementById('fisicoList');
-  const aplicList = document.getElementById('aplicList');
-
-  const balanceFill = document.getElementById('balanceFill');
-  const balanceStatus = document.getElementById('balanceStatus');
-  const recipeStatus = document.getElementById('recipeStatus');
-  const riTipo = document.getElementById('riTipo');
-  const riDosis = document.getElementById('riDosis');
-  const riFraguado = document.getElementById('riFraguado');
-  const riResistencia = document.getElementById('riResistencia');
-
-  const typeButtons = document.querySelectorAll('.type-btn');
-  const presetButtons = document.querySelectorAll('.preset-btn');
-  let currentType = 'A';
-  let currentPreset = 'estandar';
-
-  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
-  function flash(el) { el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
-
-  const ASTM_OPTIMOS = {
-    A: { water: 8, aditivo: 10, ac: 45, temp: 20 },
-    D: { water: 8, aditivo: 13, ac: 45, temp: 28 },
-    E: { water: 8, aditivo: 13, ac: 45, temp: 8  }
-  };
-
-  const PRESETS = {
-    estandar:       { water: 8,  aditivo: 10, ac: 45, temp: 20 },
-    alta:           { water: 12, aditivo: 14, ac: 35, temp: 20 },
-    autocompactante:{ water: 6,  aditivo: 18, ac: 42, temp: 20 },
-    masivo:         { water: 10, aditivo: 12, ac: 48, temp: 28 },
-    frio:           { water: 7,  aditivo: 16, ac: 42, temp: 5  },
-    escultura:      { water: 9,  aditivo: 15, ac: 40, temp: 18 }
-  };
-
-  function applyValues(v) {
-    waterSlider.value = v.water;
-    aditivoSlider.value = v.aditivo;
-    acSlider.value = v.ac;
-    tempSlider.value = v.temp;
-    update();
-  }
-
-  function updateSliderFill(sgEl, slider) {
-    const pct = ((parseFloat(slider.value) - parseFloat(slider.min)) / (parseFloat(slider.max) - parseFloat(slider.min))) * 100;
-    sgEl.style.setProperty('--fill', pct + '%');
-  }
-
-  function getBarClass(value, good, warn) {
-    if (value >= good[0] && value <= good[1]) return '';
-    if (value >= warn[0] && value <= warn[1]) return 'warning';
-    return 'danger';
-  }
-
-  function update() {
-    const water = parseInt(waterSlider.value);
-    const aditivo = parseInt(aditivoSlider.value) / 10;
-    const ac = parseInt(acSlider.value) / 100;
-    const temp = parseInt(tempSlider.value);
-
-    if (waterValue.textContent !== '-' + water + '%') { waterValue.textContent = '-' + water + '%'; flash(waterValue); }
-    if (aditivoValue.textContent !== aditivo.toFixed(1) + '%') { aditivoValue.textContent = aditivo.toFixed(1) + '%'; flash(aditivoValue); }
-    if (acValue.textContent !== ac.toFixed(2)) { acValue.textContent = ac.toFixed(2); flash(acValue); }
-    if (tempValue.textContent !== temp + '°C') { tempValue.textContent = temp + '°C'; flash(tempValue); }
-
-    updateSliderFill(sgWater, waterSlider);
-    updateSliderFill(sgAditivo, aditivoSlider);
-    updateSliderFill(sgAc, acSlider);
-    updateSliderFill(sgTemp, tempSlider);
-
-    let fluidez = 40 + water * 3 + (aditivo - 1) * 25 + (ac - 0.45) * 200;
-    if (currentType === 'A') fluidez += 5;
-    if (currentType === 'D') fluidez += 8;
-    if (currentType === 'E') fluidez -= 5;
-    if (currentPreset === 'autocompactante') fluidez += 20;
-    fluidez = clamp(fluidez, 5, 100);
-
-    let viscosidad = 60 - water * 2.5 - (aditivo - 1) * 15 + (0.45 - ac) * 100;
-    if (currentType === 'E') viscosidad += 10;
-    if (currentPreset === 'autocompactante') viscosidad -= 15;
-    viscosidad = clamp(viscosidad, 5, 100);
-
-    let fraguado = 50 - water * 1.5 + (aditivo - 1) * 3;
-    if (currentType === 'D') fraguado += 30;
-    if (currentType === 'E') fraguado -= 30;
-    if (temp > 28) fraguado -= (temp - 28) * 1.5;
-    if (temp < 10) fraguado += (10 - temp) * 1.2;
-    fraguado = clamp(fraguado, 5, 100);
-
-    const A = 100, B = 10;
-    let resistenciaMPa = A / Math.pow(B, ac);
-    let resistencia = (resistenciaMPa / 35) * 100;
-    if (currentType === 'E') resistencia *= 1.15;
-    if (currentType === 'D') resistencia *= 0.95;
-    if (currentPreset === 'alta') resistencia *= 1.15;
-    resistencia = clamp(resistencia, 60, 130);
-
-    let exudacion = 30 + water * 3 - (aditivo - 1) * 12;
-    if (currentType === 'A') exudacion += 8;
-    if (currentType === 'E') exudacion -= 10;
-    if (currentPreset === 'autocompactante') exudacion -= 15;
-    exudacion = clamp(exudacion, 3, 100);
-
-    let detalle = 30 + aditivo * 20 + (ac - 0.40) * 80;
-    if (currentType === 'D') detalle += 15;
-    if (currentType === 'E') detalle -= 8;
-    if (currentPreset === 'escultura') detalle += 25;
-    detalle = clamp(detalle, 5, 100);
-
-    let bombeo = 50 + (aditivo - 1) * 20 + (ac - 0.45) * 150 - water * 1;
-    if (currentPreset === 'masivo') bombeo -= 10;
-    if (currentPreset === 'autocompactante') bombeo += 20;
-    bombeo = clamp(bombeo, 5, 100);
-
-    function renderBar(key, value, good, warn) {
-      bars[key].fill.style.height = value + '%';
-      bars[key].val.textContent = Math.round(value);
-      bars[key].fill.classList.remove('warning', 'danger');
-      const cls = getBarClass(value, good, warn);
-      if (cls) bars[key].fill.classList.add(cls);
-    }
-
-    renderBar('fluidez', fluidez, [40, 85], [25, 95]);
-    renderBar('viscosidad', viscosidad, [30, 65], [15, 80]);
-    renderBar('fraguado', fraguado, [30, 70], [15, 85]);
-    renderBar('resistencia', resistencia, [80, 130], [65, 140]);
-    renderBar('exudacion', exudacion, [15, 45], [5, 65]);
-    renderBar('detalle', detalle, [55, 100], [35, 100]);
-    renderBar('bombeo', bombeo, [45, 85], [25, 95]);
-
-    const scores = [
-      1 - Math.abs(clamp(fluidez, 40, 85) - fluidez) / 60,
-      1 - Math.abs(clamp(viscosidad, 30, 65) - viscosidad) / 60,
-      1 - Math.abs(clamp(fraguado, 30, 70) - fraguado) / 60,
-      1 - Math.abs(clamp(resistencia, 80, 130) - resistencia) / 60,
-      1 - Math.abs(clamp(exudacion, 15, 45) - exudacion) / 60,
-      1 - Math.abs(clamp(detalle, 55, 100) - detalle) / 60,
-      1 - Math.abs(clamp(bombeo, 45, 85) - bombeo) / 60
-    ];
-    const balance = clamp(scores.reduce((a, b) => a + b, 0) / scores.length * 100, 10, 100
+  const aditivoValue = document.getElementById('aditivo
