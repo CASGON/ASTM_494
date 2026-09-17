@@ -720,7 +720,7 @@
 
   .example-svg svg { width: 100%; height: 100%; }
 
-  /* ═══ ANIMACIONES MEJORADAS ═══ */
+  /* ═══ ANIMACIONES ═══ */
   @keyframes dropFall {
     0% { transform: translateY(-30px) scale(0.5); opacity: 0; }
     30% { opacity: 1; transform: translateY(0) scale(1); }
@@ -752,24 +752,11 @@
     100% { transform: scale(2.5); opacity: 0; }
   }
 
-  @keyframes floatUp {
-    0% { transform: translateY(0); opacity: 0.8; }
-    100% { transform: translateY(-40px); opacity: 0; }
-  }
-
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-2px); }
-    75% { transform: translateX(2px); }
-  }
-
   .drop-anim { animation: dropFall 2.5s infinite ease-in; }
   .particle-spread { animation: particleSpread 2.5s infinite ease-in-out; }
   .particle-close { animation: particleClose 2.5s infinite ease-in-out; }
   .dollar-anim { animation: dollarPulse 1.8s infinite ease-in-out; }
   .ripple-anim { animation: ripple 2.5s infinite ease-out; }
-  .float-anim { animation: floatUp 3s infinite ease-out; }
-  .shake-anim { animation: shake 0.5s infinite ease-in-out; }
 
   .example-card .ex-desc {
     font-size: 0.82rem;
@@ -856,7 +843,7 @@
 
   .xr-header h2 span { color: var(--fmp-green); }
 
-  /* Logo CEMEX MEJORADO */
+  /* Logo CEMEX */
   .cemex-brand {
     display: flex;
     align-items: center;
@@ -875,6 +862,7 @@
   .cemex-brand-text .cb-main { font-size: 1.05rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
   .cemex-brand-text .cb-sub { font-size: 0.62rem; font-weight: 600; color: #39ff14; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 2px; }
 
+  /* Comparativa de bustos */
   .sculpture-compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -990,7 +978,7 @@
     50% { filter: brightness(1.4); }
   }
 
-  /* Datos técnicos Isoflow/Isoflex/Superfast */
+  /* Panel de datos técnicos CEMEX */
   .product-specs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1002,31 +990,10 @@
     border-radius: 12px;
   }
 
-  .product-spec {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .product-spec .ps-label {
-    font-size: 0.62rem;
-    font-weight: 700;
-    color: #39ff14;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-  }
-
-  .product-spec .ps-value {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: #e0e0e0;
-    line-height: 1.35;
-  }
-
-  .product-spec .ps-value.highlight {
-    color: #baff72;
-    font-size: 1rem;
-  }
+  .product-spec { display: flex; flex-direction: column; gap: 4px; }
+  .product-spec .ps-label { font-size: 0.62rem; font-weight: 700; color: #39ff14; text-transform: uppercase; letter-spacing: 0.15em; }
+  .product-spec .ps-value { font-size: 0.88rem; font-weight: 700; color: #e0e0e0; line-height: 1.35; }
+  .product-spec .ps-value.highlight { color: #baff72; font-size: 1rem; }
 
   .xr-cta {
     display: flex;
@@ -1140,18 +1107,11 @@
     100% { transform: translateY(-15px); opacity: 0; }
   }
 
-  @keyframes grainShake {
-    0%, 100% { transform: translate(0, 0); }
-    33% { transform: translate(0.5px, -0.5px); }
-    66% { transform: translate(-0.5px, 0.5px); }
-  }
-
   .shine-anim { animation: surfaceShine 2.5s infinite ease-in-out; }
   .crack-anim { animation: crackPulse 1.8s infinite ease-in-out; }
   .glow-green { animation: detailGlow 3s infinite ease-in-out; }
   .glow-red { animation: detailGlowRed 2.5s infinite ease-in-out; }
   .bubble-anim { animation: bubbleFloat 3s infinite ease-out; }
-  .grain-anim { animation: grainShake 0.4s infinite ease-in-out; }
 
   .footer { margin-top: clamp(30px, 5vw, 50px); text-align: center; padding-top: 25px; border-top: 1px solid rgba(57, 255, 20, 0.1); color: #666; font-size: clamp(0.75rem, 1.3vw, 0.85rem); line-height: 1.6; }
   .footer strong { color: var(--fmp-green); }
@@ -1544,7 +1504,6 @@ de fluidez es marginal: saturación.</div>
 
     <div class="examples-grid">
 
-      <!-- EJEMPLO 1: Solo agregar plastificante -->
       <div class="example-card">
         <div class="ex-title">1. Solo agregar plastificante</div>
         <div class="example-svg">
@@ -1578,7 +1537,6 @@ de fluidez es marginal: saturación.</div>
         </div>
       </div>
 
-      <!-- EJEMPLO 2: Plastificante + reducir agua -->
       <div class="example-card">
         <div class="ex-title">2. Plastificante + reducir agua</div>
         <div class="example-svg">
@@ -1612,7 +1570,6 @@ de fluidez es marginal: saturación.</div>
         </div>
       </div>
 
-      <!-- EJEMPLO 3: Plastificante + menos agua + menos cemento -->
       <div class="example-card">
         <div class="ex-title">3. Plastificante + menos agua + menos cemento</div>
         <div class="example-svg">
@@ -1652,11 +1609,8 @@ de fluidez es marginal: saturación.</div>
       </div>
       <div class="cemex-brand">
         <svg class="cemex-logo-svg" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
-          <!-- Barra roja inclinada -->
           <polygon points="10,4 28,4 18,36 0,36" fill="#e30613"/>
-          <!-- Barra azul inclinada -->
           <polygon points="32,4 50,4 40,36 22,36" fill="#003da5"/>
-          <!-- Texto CEMEX -->
           <text x="58" y="28" font-family="Inter, sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing="-0.8">CEMEX</text>
         </svg>
         <div class="cemex-brand-text">
@@ -1670,7 +1624,7 @@ de fluidez es marginal: saturación.</div>
       Una misma escultura, dos resultados. Nuestra demo XR compara el nivel de detalle, acabado superficial y reproducción de texturas finas <strong style="color:#39ff14;">con</strong> y <strong style="color:#ff4d4d;">sin</strong> superplastificante en la mezcla.
     </p>
 
-    <!-- Datos técnicos Isoflow / Isoflex / Superfast -->
+    <!-- Panel de datos técnicos CEMEX -->
     <div class="product-specs">
       <div class="product-spec">
         <span class="ps-label">Tecnología</span>
@@ -1701,26 +1655,18 @@ de fluidez es marginal: saturación.</div>
         <span class="sculpture-badge">Con aditivo</span>
         <div class="sculpture-svg">
           <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid meet" class="glow-green">
-            <!-- Pedestal -->
             <rect x="70" y="200" width="160" height="30" fill="#1a1a1a" stroke="#39ff14" stroke-width="1.5" rx="3"/>
             <text x="150" y="220" fill="#39ff14" font-family="Inter" font-size="7" font-weight="600" text-anchor="middle">CONCRETO ARQUITECTÓNICO ULTRA BLANCO</text>
-            <!-- Busto con detalles finos -->
             <ellipse cx="150" cy="120" rx="45" ry="60" fill="#0a0a0a" stroke="#39ff14" stroke-width="2" class="shine-anim"/>
-            <!-- Ojos -->
             <ellipse cx="135" cy="108" rx="5" ry="3" fill="#39ff14" class="shine-anim"/>
             <ellipse cx="165" cy="108" rx="5" ry="3" fill="#39ff14" class="shine-anim" style="animation-delay:0.5s"/>
-            <!-- Nariz -->
             <path d="M 150 115 L 147 132 L 153 132 Z" fill="none" stroke="#39ff14" stroke-width="1.2"/>
-            <!-- Boca -->
             <path d="M 140 148 Q 150 156 160 148" fill="none" stroke="#39ff14" stroke-width="1.4"/>
-            <!-- Cabello/detalles finos -->
             <path d="M 105 100 Q 100 115 105 130" fill="none" stroke="#39ff14" stroke-width="0.9" class="shine-anim"/>
             <path d="M 195 100 Q 200 115 195 130" fill="none" stroke="#39ff14" stroke-width="0.9" class="shine-anim" style="animation-delay:0.3s"/>
             <path d="M 112 75 Q 150 60 188 75" fill="none" stroke="#39ff14" stroke-width="0.9"/>
             <path d="M 108 88 Q 150 70 192 88" fill="none" stroke="#39ff14" stroke-width="0.7" class="shine-anim" style="animation-delay:0.6s"/>
-            <!-- Reflejo de brillo -->
             <ellipse cx="132" cy="92" rx="8" ry="4" fill="#baff72" opacity="0.35" class="shine-anim" style="animation-delay:0.4s"/>
-            <!-- Etiqueta -->
             <text x="150" y="238" fill="#39ff14" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie lisa · Detalle nítido</text>
           </svg>
         </div>
@@ -1738,31 +1684,22 @@ de fluidez es marginal: saturación.</div>
         <span class="sculpture-badge">Sin aditivo</span>
         <div class="sculpture-svg">
           <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid meet" class="glow-red">
-            <!-- Pedestal -->
             <rect x="70" y="200" width="160" height="30" fill="#1a1a1a" stroke="#ff4d4d" stroke-width="1.5" rx="3"/>
             <text x="150" y="220" fill="#ff4d4d" font-family="Inter" font-size="7" font-weight="600" text-anchor="middle">CONCRETO SIN ADITIVO</text>
-            <!-- Busto con defectos -->
             <ellipse cx="150" cy="120" rx="45" ry="60" fill="#0a0a0a" stroke="#ff4d4d" stroke-width="2" class="grain-anim"/>
-            <!-- Ojos gruesos -->
             <ellipse cx="135" cy="108" rx="6" ry="4" fill="#ff4d4d" class="crack-anim"/>
             <ellipse cx="165" cy="108" rx="6" ry="4" fill="#ff4d4d" class="crack-anim" style="animation-delay:0.5s"/>
-            <!-- Nariz -->
             <path d="M 150 115 L 146 133 L 154 133 Z" fill="none" stroke="#ff4d4d" stroke-width="1.2"/>
-            <!-- Boca -->
             <path d="M 138 150 Q 150 158 162 150" fill="none" stroke="#ff4d4d" stroke-width="1.4"/>
-            <!-- Grietas -->
             <path d="M 105 100 Q 100 115 105 130" fill="none" stroke="#ff4d4d" stroke-width="0.9" class="crack-anim"/>
             <path d="M 195 100 Q 200 115 195 130" fill="none" stroke="#ff4d4d" stroke-width="0.9" class="crack-anim" style="animation-delay:0.3s"/>
-            <!-- Burbujas visibles (animación flotante) -->
             <circle class="bubble-anim" cx="128" cy="125" r="3.5" fill="none" stroke="#ff4d4d" stroke-width="0.9"/>
             <circle class="bubble-anim" cx="172" cy="135" r="3" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:0.6s"/>
             <circle class="bubble-anim" cx="155" cy="150" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:1.2s"/>
             <circle class="bubble-anim" cx="122" cy="85" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:0.9s"/>
             <circle class="bubble-anim" cx="178" cy="95" r="2" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:1.5s"/>
-            <!-- Grietas secundarias -->
             <path d="M 120 88 L 124 95 L 119 102" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim"/>
             <path d="M 180 95 L 176 103 L 181 110" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim" style="animation-delay:0.4s"/>
-            <!-- Etiqueta -->
             <text x="150" y="238" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie rugosa · Burbujas y grietas</text>
           </svg>
         </div>
