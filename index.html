@@ -81,13 +81,7 @@
     filter: drop-shadow(0 0 10px rgba(57, 255, 20, 0.35));
   }
 
-  #logo-3d-scene {
-    width: 92%;
-    height: 92%;
-    position: relative;
-    z-index: 2;
-  }
-
+  #logo-3d-scene { width: 92%; height: 92%; position: relative; z-index: 2; }
   #logo-3d-scene canvas { display: block; width: 100%; height: 100%; }
 
   .header-text { text-align: left; flex: 1 1 320px; min-width: 0; position: relative; z-index: 2; }
@@ -122,7 +116,7 @@
     max-width: 700px;
   }
 
-  /* ================= GRID ================= */
+  /* ================= GRID CON DIAGRAMAS SVG ================= */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -215,7 +209,7 @@
 
   .card ul li::before { content: '▹'; position: absolute; left: 0; color: var(--fmp-green); }
 
-  /* ================= SIMULADOR ASTM ================= */
+  /* ================= SIMULADOR ================= */
   .simulator-section {
     margin-top: clamp(30px, 5vw, 50px);
     background: #0a0a0a;
@@ -273,7 +267,7 @@
   .preset-btn:hover { color: var(--fmp-green-light); border-color: rgba(57, 255, 20, 0.5); }
   .preset-btn.active { background: var(--fmp-green); color: #020302; border-color: var(--fmp-green); box-shadow: 0 0 15px rgba(57, 255, 20, 0.6); }
 
-  .type-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  .type-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
 
   .type-btn {
     padding: 10px 24px;
@@ -292,26 +286,6 @@
 
   .type-btn:hover { color: var(--fmp-green-light); border-color: rgba(57, 255, 20, 0.5); }
   .type-btn.active { background: var(--fmp-green); color: #020302; border-color: var(--fmp-green); box-shadow: 0 0 20px rgba(57, 255, 20, 0.7); transform: scale(1.05); }
-
-  .optimize-btn {
-    display: block;
-    margin: 0 auto 25px;
-    padding: 12px 32px;
-    background: transparent;
-    color: var(--fmp-green);
-    font-family: inherit;
-    font-size: clamp(0.85rem, 1.4vw, 1rem);
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border: 2px solid var(--fmp-green);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
-  }
-
-  .optimize-btn:hover { background: var(--fmp-green); color: #020302; box-shadow: 0 0 30px rgba(57, 255, 20, 0.8); transform: scale(1.05); }
 
   .sliders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 25px; }
 
@@ -596,11 +570,9 @@
 
   .qr-caption { text-align: center; font-size: clamp(0.62rem, 1.1vw, 0.7rem); color: var(--fmp-green); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 10px; }
 
-  /* ================= FOOTER ================= */
   .footer { margin-top: clamp(30px, 5vw, 50px); text-align: center; padding-top: 25px; border-top: 1px solid rgba(57, 255, 20, 0.1); color: #666; font-size: clamp(0.75rem, 1.3vw, 0.85rem); line-height: 1.6; }
   .footer strong { color: var(--fmp-green); }
 
-  /* ================= RESPONSIVE ================= */
   @media (max-width: 900px) {
     .header { flex-direction: column; text-align: center; }
     .header-text { text-align: center; flex: 1 1 auto; }
@@ -653,9 +625,35 @@
     </div>
   </div>
 
-  <!-- ================= TARJETAS ================= -->
+  <!-- ================= TARJETAS CON DIAGRAMAS SVG ================= -->
   <div class="grid">
+
     <div class="card">
+      <div class="card-diagram">
+        <svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <text x="16" y="24" fill="#39ff14" font-family="Inter, sans-serif" font-size="12" font-weight="700">TIPO A</text>
+          <circle cx="40" cy="105" r="10" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="70" cy="120" r="10" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="58" cy="88" r="10" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="86" cy="100" r="10" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="104" cy="118" r="10" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="46" cy="138" r="10" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="124" cy="94" r="10" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <circle cx="82" cy="140" r="10" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+          <text x="155" y="112" fill="#39ff14" font-family="Inter, sans-serif" font-size="24" font-weight="900">→</text>
+          <circle cx="200" cy="105" r="10" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="222" cy="120" r="10" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="218" cy="88" r="10" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="240" cy="100" r="10" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="258" cy="118" r="10" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="206" cy="138" r="10" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="278" cy="94" r="10" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <circle cx="242" cy="140" r="10" fill="none" stroke="#baff72" stroke-width="1.8"/>
+          <text x="322" y="98" fill="#baff72" font-family="Inter, sans-serif" font-size="11" font-weight="700" text-anchor="middle">-5%</text>
+          <text x="322" y="113" fill="#baff72" font-family="Inter, sans-serif" font-size="11" font-weight="700" text-anchor="middle">AGUA</text>
+          <text x="180" y="184" fill="#888" font-family="Inter, sans-serif" font-size="10" text-anchor="middle">Partículas más cercanas = mayor resistencia</text>
+        </svg>
+      </div>
       <h3>Tipo A <span class="badge">Reductor</span></h3>
       <span class="label">Función Principal</span>
       <p>Reduce el agua de mezclado en al menos un 5% sin alterar el fraguado. Aumenta trabajabilidad y resistencia.</p>
@@ -668,6 +666,26 @@
     </div>
 
     <div class="card">
+      <div class="card-diagram">
+        <svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <text x="16" y="24" fill="#ffaa00" font-family="Inter, sans-serif" font-size="12" font-weight="700">TIPO D</text>
+          <line x1="30" y1="100" x2="330" y2="100" stroke="#ffaa00" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <circle cx="55" cy="100" r="5" fill="#ffaa00"/>
+          <text x="55" y="122" fill="#888" font-family="Inter, sans-serif" font-size="10" text-anchor="middle">Inicio</text>
+          <circle cx="180" cy="100" r="5" fill="#ffaa00"/>
+          <text x="180" y="122" fill="#888" font-family="Inter, sans-serif" font-size="10" text-anchor="middle">Fraguado normal</text>
+          <circle cx="305" cy="100" r="5" fill="#39ff14"/>
+          <text x="305" y="122" fill="#39ff14" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" font-weight="700">+3.5 h</text>
+          <circle cx="70" cy="55" r="7" fill="none" stroke="#ffaa00" stroke-width="1.3"/>
+          <circle cx="105" cy="48" r="7" fill="none" stroke="#ffaa00" stroke-width="1.3"/>
+          <circle cx="140" cy="55" r="7" fill="none" stroke="#ffaa00" stroke-width="1.3"/>
+          <circle cx="175" cy="48" r="7" fill="none" stroke="#ffaa00" stroke-width="1.3"/>
+          <circle cx="210" cy="55" r="7" fill="none" stroke="#ffaa00" stroke-width="1.3"/>
+          <circle cx="245" cy="48" r="7" fill="none" stroke="#ffaa00" stroke-width="1.3"/>
+          <circle cx="280" cy="55" r="7" fill="none" stroke="#ffaa00" stroke-width="1.3"/>
+          <text x="180" y="184" fill="#888" font-family="Inter, sans-serif" font-size="10" text-anchor="middle">Ventana amplia de trabajo → llena cada detalle del molde</text>
+        </svg>
+      </div>
       <h3>Tipo D <span class="badge">Reductor + Retardante</span></h3>
       <span class="label">Función Principal</span>
       <p>Combina reducción de agua con retardo de fraguado (hasta 3.5 h). Extiende revenimiento y reduce picos térmicos.</p>
@@ -680,6 +698,20 @@
     </div>
 
     <div class="card">
+      <div class="card-diagram">
+        <svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <text x="16" y="24" fill="#ff4d4d" font-family="Inter, sans-serif" font-size="12" font-weight="700">TIPO E</text>
+          <line x1="50" y1="40" x2="50" y2="160" stroke="#333" stroke-width="1"/>
+          <line x1="50" y1="160" x2="340" y2="160" stroke="#333" stroke-width="1"/>
+          <text x="42" y="48" fill="#666" font-family="Inter, sans-serif" font-size="9" text-anchor="end">Res.</text>
+          <text x="340" y="178" fill="#666" font-family="Inter, sans-serif" font-size="9" text-anchor="end">Tiempo</text>
+          <path d="M 50 160 Q 170 156 330 110" stroke="#39ff14" stroke-width="1.4" fill="none" stroke-dasharray="4 3"/>
+          <path d="M 50 160 Q 100 150 160 70" stroke="#ff4d4d" stroke-width="2.2" fill="none"/>
+          <text x="175" y="72" fill="#ff4d4d" font-family="Inter, sans-serif" font-size="11" font-weight="700">+125% a 3 días</text>
+          <text x="255" y="130" fill="#39ff14" font-family="Inter, sans-serif" font-size="10">Curva normal</text>
+          <text x="180" y="194" fill="#888" font-family="Inter, sans-serif" font-size="10" text-anchor="middle">Desarrollo acelerado de resistencias tempranas</text>
+        </svg>
+      </div>
       <h3>Tipo E <span class="badge">Reductor + Acelerante</span></h3>
       <span class="label">Función Principal</span>
       <p>Combina reducción de agua con aceleración de fraguado y resistencias tempranas. Ideal para climas fríos.</p>
@@ -690,12 +722,13 @@
         <li>Pavimentos de apertura rápida</li>
       </ul>
     </div>
+
   </div>
 
-  <!-- ================= SIMULADOR ASTM ================= -->
+  <!-- ================= SIMULADOR ================= -->
   <div class="simulator-section">
-    <h2>Simulador <span>ASTM C494</span></h2>
-    <p>Selecciona el tipo de aditivo y presiona <strong>⚡ Optimizar</strong> para calcular la dosificación óptima según la norma.</p>
+    <h2>Simulador de <span>Dosificación</span></h2>
+    <p>Ajusta los parámetros o presiona un preset para cargar los valores óptimos ASTM C494.</p>
 
     <!-- Presets -->
     <div class="preset-selector" id="presetSelector">
@@ -707,15 +740,12 @@
       <button class="preset-btn" data-preset="escultura">Escultura</button>
     </div>
 
-    <!-- Tipo ASTM -->
+    <!-- Tipo -->
     <div class="type-selector" id="typeSelector">
       <button class="type-btn active" data-type="A">Tipo A</button>
       <button class="type-btn" data-type="D">Tipo D</button>
       <button class="type-btn" data-type="E">Tipo E</button>
     </div>
-
-    <!-- Botón Optimizar -->
-    <button class="optimize-btn" id="optimizeBtn">⚡ Optimizar Mezcla</button>
 
     <!-- Sliders -->
     <div class="sliders-grid">
@@ -724,8 +754,8 @@
         <input type="range" id="waterSlider" min="0" max="15" value="8" step="1">
       </div>
       <div class="slider-group" id="sg-aditivo">
-        <label><span>Dosis de aditivo</span><span class="value" id="aditivoValue">0.26%</span></label>
-        <input type="range" id="aditivoSlider" min="0" max="20" value="2.6" step="0.1">
+        <label><span>Dosis de aditivo</span><span class="value" id="aditivoValue">1.0%</span></label>
+        <input type="range" id="aditivoSlider" min="0" max="20" value="10" step="1">
       </div>
       <div class="slider-group" id="sg-ac">
         <label><span>Relación a/c</span><span class="value" id="acValue">0.45</span></label>
@@ -789,7 +819,7 @@
     <!-- Receta -->
     <div class="recipe-card">
       <div class="recipe-header">
-        <span class="recipe-title">Receta Óptima ASTM C494</span>
+        <span class="recipe-title">Receta en vivo</span>
         <span class="recipe-status optimal" id="recipeStatus">Óptimo</span>
       </div>
       <div class="recipe-grid">
@@ -798,8 +828,8 @@
           <div class="ri-value" id="riTipo">Tipo A</div>
         </div>
         <div class="recipe-item">
-          <div class="ri-label">Dosis óptima</div>
-          <div class="ri-value" id="riDosis">0.26% × cem</div>
+          <div class="ri-label">Dosificación</div>
+          <div class="ri-value" id="riDosis">1.0% × cem</div>
         </div>
         <div class="recipe-item">
           <div class="ri-label">Fraguado est.</div>
@@ -848,7 +878,6 @@
     </div>
   </div>
 
-  <!-- ================= FOOTER ================= -->
   <div class="footer">
     <p>Documento técnico generado para <strong>FormMatterPrime XR</strong> — Integración de norma ASTM C494 con visualización inmersiva 3D/4D.</p>
   </div>
@@ -866,8 +895,7 @@ if (container) {
   const getSize = () => {
     const w = container.clientWidth;
     const h = container.clientHeight;
-    const s = Math.max(80, Math.min(w, h) || 200);
-    return s;
+    return Math.max(80, Math.min(w, h) || 200);
   };
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -880,7 +908,6 @@ if (container) {
   camera.position.set(0, 0, 10);
 
   const Y_AXIS = new THREE.Vector3(0, 1, 0);
-
   const CORE_COLOR = 0x0a0a0a;
   const GLOW_COLOR = 0x39ff14;
 
@@ -925,9 +952,7 @@ if (container) {
   scene.add(cubeGroup);
 
   const V4 = [];
-  for (let i = 0; i < 16; i++) {
-    V4.push([(i&1)?1:-1, (i&2)?1:-1, (i&4)?1:-1, (i&8)?1:-1]);
-  }
+  for (let i = 0; i < 16; i++) V4.push([(i&1)?1:-1, (i&2)?1:-1, (i&4)?1:-1, (i&8)?1:-1]);
   const E4 = [];
   for (let i = 0; i < 16; i++) {
     for (let j = i+1; j < 16; j++) {
@@ -953,12 +978,9 @@ if (container) {
 
   function rot4D(p, ax, ay, az) {
     let [x,y,z,w] = p, c, s, t;
-    c = Math.cos(ax); s = Math.sin(ax);
-    t = x*c - w*s; w = x*s + w*c; x = t;
-    c = Math.cos(ay); s = Math.sin(ay);
-    t = y*c - w*s; w = y*s + w*c; y = t;
-    c = Math.cos(az); s = Math.sin(az);
-    t = z*c - w*s; w = z*s + w*c; z = t;
+    c = Math.cos(ax); s = Math.sin(ax); t = x*c - w*s; w = x*s + w*c; x = t;
+    c = Math.cos(ay); s = Math.sin(ay); t = y*c - w*s; w = y*s + w*c; y = t;
+    c = Math.cos(az); s = Math.sin(az); t = z*c - w*s; w = z*s + w*c; z = t;
     return [x,y,z,w];
   }
   function project4D(p, dist) {
@@ -1037,7 +1059,7 @@ if (container) {
 </script>
 
 <!-- =========================================================
-     Simulador ASTM C494 con valores óptimos
+     Simulador con valores óptimos por tipo/preset
      ========================================================= -->
 <script>
 (function() {
@@ -1080,45 +1102,34 @@ if (container) {
 
   const typeButtons = document.querySelectorAll('.type-btn');
   const presetButtons = document.querySelectorAll('.preset-btn');
-  const optimizeBtn = document.getElementById('optimizeBtn');
   let currentType = 'A';
   let currentPreset = 'estandar';
 
   function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
   function flash(el) { el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
 
-  // ═══ Valores óptimos según ASTM C494 ═══
+  // ═══ Valores óptimos ASTM C494 por tipo de aditivo ═══
   const ASTM_OPTIMOS = {
-    A: { water: 8, aditivo: 0.26, ac: 0.45, temp: 20, fraguado: 0, resistencia: 100 },
-    D: { water: 8, aditivo: 0.39, ac: 0.45, temp: 28, fraguado: 2.0, resistencia: 100 },
-    E: { water: 8, aditivo: 0.39, ac: 0.45, temp: 8,  fraguado: -0.5, resistencia: 125 }
+    A: { water: 8, aditivo: 10, ac: 45, temp: 20 },   // 1.0% típico
+    D: { water: 8, aditivo: 13, ac: 45, temp: 28 },   // 1.3% retardante
+    E: { water: 8, aditivo: 13, ac: 45, temp: 8  }    // 1.3% acelerante
   };
 
-  // ═══ Presets de concreto ═══
-  const presets = {
-    estandar:       { water: 8,  aditivo: 0.26, ac: 45, temp: 20 },
-    alta:           { water: 12, aditivo: 0.39, ac: 35, temp: 20 },
-    autocompactante:{ water: 6,  aditivo: 0.52, ac: 42, temp: 20 },
-    masivo:         { water: 10, aditivo: 0.39, ac: 48, temp: 28 },
-    frio:           { water: 7,  aditivo: 0.52, ac: 42, temp: 5  },
-    escultura:      { water: 9,  aditivo: 0.45, ac: 40, temp: 18 }
+  // ═══ Presets de mezclas (valores óptimos por aplicación) ═══
+  const PRESETS = {
+    estandar:       { water: 8,  aditivo: 10, ac: 45, temp: 20 },
+    alta:           { water: 12, aditivo: 14, ac: 35, temp: 20 },
+    autocompactante:{ water: 6,  aditivo: 18, ac: 42, temp: 20 },
+    masivo:         { water: 10, aditivo: 12, ac: 48, temp: 28 },
+    frio:           { water: 7,  aditivo: 16, ac: 42, temp: 5  },
+    escultura:      { water: 9,  aditivo: 15, ac: 40, temp: 18 }
   };
 
-  function applyPreset(name) {
-    const p = presets[name];
-    waterSlider.value = p.water;
-    aditivoSlider.value = p.aditivo;
-    acSlider.value = p.ac;
-    tempSlider.value = p.temp;
-    update();
-  }
-
-  function applyOptimos() {
-    const opt = ASTM_OPTIMOS[currentType];
-    waterSlider.value = opt.water;
-    aditivoSlider.value = opt.aditivo;
-    acSlider.value = opt.ac * 100;
-    tempSlider.value = opt.temp;
+  function applyValues(v) {
+    waterSlider.value = v.water;
+    aditivoSlider.value = v.aditivo;
+    acSlider.value = v.ac;
+    tempSlider.value = v.temp;
     update();
   }
 
@@ -1133,15 +1144,14 @@ if (container) {
     return 'danger';
   }
 
-  // ═══ Cálculo de propiedades según ASTM C494 y Ley de Abrams ═══
   function update() {
     const water = parseInt(waterSlider.value);
-    const aditivo = parseFloat(aditivoSlider.value);
+    const aditivo = parseInt(aditivoSlider.value) / 10;
     const ac = parseInt(acSlider.value) / 100;
     const temp = parseInt(tempSlider.value);
 
     if (waterValue.textContent !== '-' + water + '%') { waterValue.textContent = '-' + water + '%'; flash(waterValue); }
-    if (aditivoValue.textContent !== aditivo.toFixed(2) + '%') { aditivoValue.textContent = aditivo.toFixed(2) + '%'; flash(aditivoValue); }
+    if (aditivoValue.textContent !== aditivo.toFixed(1) + '%') { aditivoValue.textContent = aditivo.toFixed(1) + '%'; flash(aditivoValue); }
     if (acValue.textContent !== ac.toFixed(2)) { acValue.textContent = ac.toFixed(2); flash(acValue); }
     if (tempValue.textContent !== temp + '°C') { tempValue.textContent = temp + '°C'; flash(tempValue); }
 
@@ -1150,56 +1160,53 @@ if (container) {
     updateSliderFill(sgAc, acSlider);
     updateSliderFill(sgTemp, tempSlider);
 
-    // ═══ Cálculos basados en ASTM C494 ═══
-    // Fluidez: base + reducción agua + dosis aditivo
-    let fluidez = 40 + water * 3 + (aditivo - 0.26) * 80;
+    // Fluidez
+    let fluidez = 40 + water * 3 + (aditivo - 1) * 25 + (ac - 0.45) * 200;
     if (currentType === 'A') fluidez += 5;
     if (currentType === 'D') fluidez += 8;
     if (currentType === 'E') fluidez -= 5;
     if (currentPreset === 'autocompactante') fluidez += 20;
     fluidez = clamp(fluidez, 5, 100);
 
-    // Viscosidad: inversa a fluidez
-    let viscosidad = 70 - water * 2.5 - (aditivo - 0.26) * 60;
+    // Viscosidad
+    let viscosidad = 60 - water * 2.5 - (aditivo - 1) * 15 + (0.45 - ac) * 100;
     if (currentType === 'E') viscosidad += 10;
     if (currentPreset === 'autocompactante') viscosidad -= 15;
     viscosidad = clamp(viscosidad, 5, 100);
 
-    // Fraguado: 50 = normal
-    let fraguado = 50 - water * 1.5 + (aditivo - 0.26) * 20;
+    // Fraguado (50 = normal)
+    let fraguado = 50 - water * 1.5 + (aditivo - 1) * 3;
     if (currentType === 'D') fraguado += 30;
     if (currentType === 'E') fraguado -= 30;
     if (temp > 28) fraguado -= (temp - 28) * 1.5;
     if (temp < 10) fraguado += (10 - temp) * 1.2;
     fraguado = clamp(fraguado, 5, 100);
 
-    // Resistencia: Ley de Abrams simplificada
-    // f'c = A / B^(a/c). Con A=100 MPa, B=10, para a/c=0.45 → 35 MPa
+    // Resistencia (Ley de Abrams simplificada)
     const A = 100, B = 10;
     let resistenciaMPa = A / Math.pow(B, ac);
-    let resistencia = (resistenciaMPa / 35) * 100; // 100 = referencia 35 MPa
-    // Ajuste por tipo (Tipo E: +25% a 3 días → boost en resistencia)
+    let resistencia = (resistenciaMPa / 35) * 100;
     if (currentType === 'E') resistencia *= 1.15;
     if (currentType === 'D') resistencia *= 0.95;
     if (currentPreset === 'alta') resistencia *= 1.15;
     resistencia = clamp(resistencia, 60, 130);
 
     // Exudación
-    let exudacion = 30 + water * 3 - (aditivo - 0.26) * 40;
+    let exudacion = 30 + water * 3 - (aditivo - 1) * 12;
     if (currentType === 'A') exudacion += 8;
     if (currentType === 'E') exudacion -= 10;
     if (currentPreset === 'autocompactante') exudacion -= 15;
     exudacion = clamp(exudacion, 3, 100);
 
     // Detalle en molde
-    let detalle = 30 + aditivo * 80 + (ac - 0.40) * 80;
+    let detalle = 30 + aditivo * 20 + (ac - 0.40) * 80;
     if (currentType === 'D') detalle += 15;
     if (currentType === 'E') detalle -= 8;
     if (currentPreset === 'escultura') detalle += 25;
     detalle = clamp(detalle, 5, 100);
 
     // Bombeabilidad
-    let bombeo = 50 + (aditivo - 0.26) * 60 + (ac - 0.45) * 150 - water * 1;
+    let bombeo = 50 + (aditivo - 1) * 20 + (ac - 0.45) * 150 - water * 1;
     if (currentPreset === 'masivo') bombeo -= 10;
     if (currentPreset === 'autocompactante') bombeo += 20;
     bombeo = clamp(bombeo, 5, 100);
@@ -1240,12 +1247,12 @@ if (container) {
     recipeStatus.textContent = status;
     recipeStatus.className = 'recipe-status ' + statusClass;
 
-    // ═══ Receta ASTM C494 ═══
-    const opt = ASTM_OPTIMOS[currentType];
+    // Receta
     riTipo.textContent = 'Tipo ' + currentType;
-    riDosis.textContent = aditivo.toFixed(2) + '% × cem';
+    riDosis.textContent = aditivo.toFixed(1) + '% × cem';
     if (currentType === 'D') {
-      riFraguado.textContent = '+' + opt.fraguado.toFixed(1) + ' h';
+      const h = (fraguado / 50 * 3.5).toFixed(1);
+      riFraguado.textContent = '+' + h + ' h';
     } else if (currentType === 'E') {
       riFraguado.textContent = 'Acelerado';
     } else {
@@ -1323,26 +1330,24 @@ if (container) {
   acSlider.addEventListener('input', update);
   tempSlider.addEventListener('input', update);
 
+  // Al cambiar tipo ASTM → cargar valores óptimos de ese tipo
   typeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       typeButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentType = btn.dataset.type;
-      applyOptimos();  // Auto-aplicar valores óptimos ASTM
+      applyValues(ASTM_OPTIMOS[currentType]);
     });
   });
 
+  // Al cambiar preset de mezcla → cargar valores óptimos de esa mezcla
   presetButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       presetButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentPreset = btn.dataset.preset;
-      applyPreset(currentPreset);
+      applyValues(PRESETS[currentPreset]);
     });
-  });
-
-  optimizeBtn.addEventListener('click', () => {
-    applyOptimos();
   });
 
   // Inicial
