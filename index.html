@@ -35,7 +35,7 @@
     background-size: 40px 40px, 40px 40px;
   }
 
-  .container { max-width: 1100px; width: 100%; margin: 0 auto; padding-top: clamp(20px, 4vw, 40px); }
+  .container { max-width: 1100px; width: 100%; margin: 0 auto; }
 
   /* ═══════════════════════════════════════════════════════════
      ÍNDICE DE NAVEGACIÓN — 3 BARRAS DESPLEGABLES
@@ -94,8 +94,7 @@
   .nav-bar-trigger {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
     padding: 12px 16px;
     background: transparent;
@@ -156,7 +155,6 @@
     opacity: 1;
   }
 
-  /* Menú desplegable */
   .nav-bar-menu {
     max-height: 0;
     overflow: hidden;
@@ -170,10 +168,7 @@
     border-top-width: 1px;
   }
 
-  .nav-bar-menu ul {
-    list-style: none;
-    padding: 6px 0;
-  }
+  .nav-bar-menu ul { list-style: none; padding: 6px 0; }
 
   .nav-bar-menu ul li a {
     display: flex;
@@ -204,17 +199,9 @@
   }
 
   @media (max-width: 640px) {
-    .nav-bars {
-      grid-template-columns: 1fr;
-      gap: 6px;
-    }
-    .nav-bar-trigger {
-      padding: 10px 14px;
-      font-size: 0.72rem;
-    }
-    .nav-bar.active .nav-bar-menu {
-      max-height: 260px;
-    }
+    .nav-bars { grid-template-columns: 1fr; gap: 6px; }
+    .nav-bar-trigger { padding: 10px 14px; font-size: 0.72rem; }
+    .nav-bar.active .nav-bar-menu { max-height: 260px; }
   }
 
   /* ================= HEADER ================= */
@@ -223,7 +210,7 @@
     align-items: center;
     justify-content: center;
     gap: clamp(20px, 4vw, 40px);
-    padding-bottom: clamp(20px, 3vw, 30px);
+    padding: 30px 0 clamp(20px, 3vw, 30px);
     margin-bottom: clamp(30px, 5vw, 45px);
     border-bottom: 2px solid var(--fmp-green);
     position: relative;
@@ -296,10 +283,7 @@
     max-width: 700px;
   }
 
-  /* ================= SECCIONES (anclas) ================= */
-  .section-anchor {
-    scroll-margin-top: 130px;
-  }
+  .section-anchor { scroll-margin-top: 130px; }
 
   /* ================= GRID ================= */
   .grid {
@@ -696,7 +680,7 @@
   .info-panel ul li::before { content: '▸'; position: absolute; left: 0; color: var(--fmp-green); font-weight: 700; }
   .info-panel ul li strong { color: var(--fmp-green-light); font-weight: 700; }
 
-  /* ================= FÓRMULAS ASTM ================= */
+  /* ================= FÓRMULAS ================= */
   .formulas-section {
     margin-top: clamp(30px, 5vw, 50px);
     background: #0a0a0a;
@@ -812,10 +796,7 @@
     font-family: 'Courier New', monospace;
   }
 
-  .formula-example .result {
-    color: var(--fmp-green);
-    font-weight: 700;
-  }
+  .formula-example .result { color: var(--fmp-green); font-weight: 700; }
 
   /* ================= EJEMPLOS VISUALES ================= */
   .examples-section {
@@ -969,7 +950,7 @@
     border-color: rgba(255, 170, 0, 0.4);
   }
 
-  /* ================= SECCIÓN XR — ESCULTURA ================= */
+  /* ================= SECCIÓN XR ================= */
   .xr-access-section {
     margin-top: clamp(30px, 5vw, 50px);
     padding: clamp(25px, 4vw, 45px) clamp(18px, 3vw, 35px);
@@ -1356,7 +1337,6 @@
 
   .qr-caption strong { color: var(--fmp-green); }
 
-  /* ═══ SECCIÓN DE REQUISITOS ═══ */
   .requirements-section {
     margin-top: 20px;
     padding: 20px 22px;
@@ -1380,12 +1360,7 @@
     border-bottom: 1px solid rgba(57, 255, 20, 0.15);
   }
 
-  .requirements-title svg {
-    width: 18px;
-    height: 18px;
-    fill: var(--fmp-green);
-    flex-shrink: 0;
-  }
+  .requirements-title svg { width: 18px; height: 18px; fill: var(--fmp-green); flex-shrink: 0; }
 
   .requirements-grid {
     display: grid;
@@ -1408,12 +1383,7 @@
     transform: translateY(-2px);
   }
 
-  .req-card .req-icon {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
+  .req-card .req-icon { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 
   .req-card .req-icon svg {
     width: 26px;
@@ -1436,13 +1406,7 @@
     letter-spacing: 0.08em;
   }
 
-  .req-card .req-desc {
-    font-size: 0.8rem;
-    color: #c0c0c0;
-    line-height: 1.55;
-    margin-bottom: 10px;
-  }
-
+  .req-card .req-desc { font-size: 0.8rem; color: #c0c0c0; line-height: 1.55; margin-bottom: 10px; }
   .req-card .req-desc strong { color: var(--fmp-green-light); }
 
   .req-card .req-link {
@@ -1458,42 +1422,14 @@
     transition: all 0.2s ease;
   }
 
-  .req-card .req-link:hover {
-    color: var(--fmp-green-light);
-    border-color: var(--fmp-green);
-  }
+  .req-card .req-link:hover { color: var(--fmp-green-light); border-color: var(--fmp-green); }
+  .req-card .req-link svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
 
-  .req-card .req-link svg {
-    width: 12px;
-    height: 12px;
-    fill: currentColor;
-    flex-shrink: 0;
-  }
-
-  @keyframes surfaceShine {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-  }
-
-  @keyframes crackPulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-  }
-
-  @keyframes detailGlow {
-    0%, 100% { filter: drop-shadow(0 0 3px rgba(57, 255, 20, 0.5)); }
-    50% { filter: drop-shadow(0 0 12px rgba(57, 255, 20, 1)); }
-  }
-
-  @keyframes detailGlowRed {
-    0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 77, 77, 0.4)); }
-    50% { filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.9)); }
-  }
-
-  @keyframes bubbleFloat {
-    0% { transform: translateY(0); opacity: 0.8; }
-    100% { transform: translateY(-15px); opacity: 0; }
-  }
+  @keyframes surfaceShine { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+  @keyframes crackPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+  @keyframes detailGlow { 0%, 100% { filter: drop-shadow(0 0 3px rgba(57, 255, 20, 0.5)); } 50% { filter: drop-shadow(0 0 12px rgba(57, 255, 20, 1)); } }
+  @keyframes detailGlowRed { 0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 77, 77, 0.4)); } 50% { filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.9)); } }
+  @keyframes bubbleFloat { 0% { transform: translateY(0); opacity: 0.8; } 100% { transform: translateY(-15px); opacity: 0; } }
 
   .shine-anim { animation: surfaceShine 2.5s infinite ease-in-out; }
   .crack-anim { animation: crackPulse 1.8s infinite ease-in-out; }
@@ -1514,7 +1450,6 @@
 
   @media (max-width: 640px) {
     body { padding: 0 14px 20px; }
-    .container { padding-top: 20px; }
     .grid { grid-template-columns: 1fr; }
     .xr-cta { flex-direction: column; text-align: center; }
     .xr-cta-text { text-align: center; }
@@ -1548,70 +1483,67 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     ÍNDICE DE NAVEGACIÓN — 3 BARRAS DESPLEGABLES
-     ═══════════════════════════════════════════════════════════ -->
-<nav class="nav-index" aria-label="Índice de navegación">
-  <div class="nav-bars">
-
-    <!-- BARRA 1: FUNDAMENTOS -->
-    <div class="nav-bar" data-bar="1">
-      <button class="nav-bar-trigger" aria-expanded="false">
-        <span class="trigger-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/></svg>
-        </span>
-        <span class="trigger-label">Fundamentos</span>
-        <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-      </button>
-      <div class="nav-bar-menu">
-        <ul>
-          <li><a href="#tipos">Tipos A, D y E</a></li>
-          <li><a href="#comparativa">Comparativa visual</a></li>
-          <li><a href="#norma">Trazabilidad ASTM C494</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- BARRA 2: SIMULACIÓN -->
-    <div class="nav-bar" data-bar="2">
-      <button class="nav-bar-trigger" aria-expanded="false">
-        <span class="trigger-icon">
-          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
-        </span>
-        <span class="trigger-label">Simulación</span>
-        <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-      </button>
-      <div class="nav-bar-menu">
-        <ul>
-          <li><a href="#simulador">Simulador de dosificación</a></li>
-          <li><a href="#formulas">Fórmulas y cálculos</a></li>
-          <li><a href="#ejemplos">Ejemplos visuales</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- BARRA 3: EXPERIENCIA XR -->
-    <div class="nav-bar" data-bar="3">
-      <button class="nav-bar-trigger" aria-expanded="false">
-        <span class="trigger-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-        </span>
-        <span class="trigger-label">Experiencia XR</span>
-        <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-      </button>
-      <div class="nav-bar-menu">
-        <ul>
-          <li><a href="#escultura">Comparativa de escultura</a></li>
-          <li><a href="#demo">Acceso a demo XR</a></li>
-          <li><a href="#requisitos">Requisitos por plataforma</a></li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
 <div class="container">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ÍNDICE DE NAVEGACIÓN — 3 BARRAS DESPLEGABLES
+       ═══════════════════════════════════════════════════════════ -->
+  <nav class="nav-index" aria-label="Índice de navegación">
+    <div class="nav-bars">
+
+      <div class="nav-bar" data-bar="1">
+        <button class="nav-bar-trigger" aria-expanded="false">
+          <span class="trigger-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/></svg>
+          </span>
+          <span class="trigger-label">Fundamentos</span>
+          <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="nav-bar-menu">
+          <ul>
+            <li><a href="#tipos">Tipos A, D y E</a></li>
+            <li><a href="#simulador">Simulador de dosificación</a></li>
+            <li><a href="#formulas">Fórmulas y trazabilidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar" data-bar="2">
+        <button class="nav-bar-trigger" aria-expanded="false">
+          <span class="trigger-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          </span>
+          <span class="trigger-label">Simulación</span>
+          <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="nav-bar-menu">
+          <ul>
+            <li><a href="#simulador">Simulador de dosificación</a></li>
+            <li><a href="#formulas">Fórmulas y cálculos</a></li>
+            <li><a href="#ejemplos">Ejemplos visuales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-bar" data-bar="3">
+        <button class="nav-bar-trigger" aria-expanded="false">
+          <span class="trigger-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          </span>
+          <span class="trigger-label">Experiencia XR</span>
+          <svg class="trigger-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="nav-bar-menu">
+          <ul>
+            <li><a href="#escultura">Comparativa de escultura</a></li>
+            <li><a href="#demo">Acceso a demo XR</a></li>
+            <li><a href="#requisitos">Requisitos por plataforma</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </nav>
 
   <!-- ================= HEADER ================= -->
   <div class="header section-anchor" id="tipos">
@@ -2119,14 +2051,11 @@ de fluidez es marginal: saturación.</div>
             <ellipse cx="165" cy="108" rx="5" ry="3" fill="#39ff14" class="shine-anim" style="animation-delay:0.5s"/>
             <path d="M 150 115 L 147 132 L 153 132 Z" fill="none" stroke="#39ff14" stroke-width="1.2"/>
             <path d="M 140 148 Q 150 156 160 148" fill="none" stroke="#39ff14" stroke-width="1.4"/>
-            <path d="M 105 100 Q 100 115 105 130" fill="none" stroke="#39ff14" stroke-width="0.9" class="shine-anim"/>
-            <path d="M 195 100 Q 200 115 195 130" fill="none" stroke="#39ff14" stroke-width="0.9" class="shine-anim" style="animation-delay:0.3s"/>
-            <path d="M 112 75 Q 150 60 188 75" fill="none" stroke="#39ff14" stroke-width="0.9"/>
             <text x="150" y="238" fill="#39ff14" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie lisa · Detalle nítido</text>
           </svg>
         </div>
         <div class="sculpture-title">Con superplastificante</div>
-        <p class="sculpture-desc">La mezcla fluye y llena cada rincón del molde. Reproduce <strong>texturas finas, poros y detalles intrincados</strong> sin burbujas ni juntas frías. Acabado arquitectónico profesional.</p>
+        <p class="sculpture-desc">La mezcla fluye y llena cada rincón del molde. Reproduce <strong>texturas finas, poros y detalles intrincados</strong> sin burbujas ni juntas frías.</p>
         <div class="detail-bar">
           <span>Detalle</span>
           <div class="detail-bar-track"><div class="detail-bar-fill"></div></div>
@@ -2149,16 +2078,13 @@ de fluidez es marginal: saturación.</div>
             <ellipse cx="150" cy="120" rx="45" ry="60" fill="#0a0a0a" stroke="#ff4d4d" stroke-width="2"/>
             <ellipse cx="135" cy="108" rx="6" ry="4" fill="#ff4d4d" class="crack-anim"/>
             <ellipse cx="165" cy="108" rx="6" ry="4" fill="#ff4d4d" class="crack-anim" style="animation-delay:0.5s"/>
-            <path d="M 150 115 L 146 133 L 154 133 Z" fill="none" stroke="#ff4d4d" stroke-width="1.2"/>
-            <path d="M 138 150 Q 150 158 162 150" fill="none" stroke="#ff4d4d" stroke-width="1.4"/>
             <circle class="bubble-anim" cx="128" cy="125" r="3.5" fill="none" stroke="#ff4d4d" stroke-width="0.9"/>
             <circle class="bubble-anim" cx="172" cy="135" r="3" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:0.6s"/>
-            <circle class="bubble-anim" cx="155" cy="150" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:1.2s"/>
-            <text x="150" y="238" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie rugosa · Burbujas y grietas</text>
+            <text x="150" y="238" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie rugosa · Burbujas</text>
           </svg>
         </div>
         <div class="sculpture-title">Sin superplastificante</div>
-        <p class="sculpture-desc">La mezcla no fluye bien y no llena el molde. Aparecen <strong>burbujas, grietas y pérdida de detalle</strong> en los bordes finos. Acabado arquitectónico deficiente.</p>
+        <p class="sculpture-desc">La mezcla no fluye bien y no llena el molde. Aparecen <strong>burbujas, grietas y pérdida de detalle</strong> en los bordes finos.</p>
         <div class="detail-bar">
           <span>Detalle</span>
           <div class="detail-bar-track"><div class="detail-bar-fill"></div></div>
@@ -2194,7 +2120,6 @@ de fluidez es marginal: saturación.</div>
       </div>
     </div>
 
-    <!-- REQUISITOS -->
     <div class="requirements-section section-anchor" id="requisitos">
       <div class="requirements-title">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
@@ -2258,6 +2183,65 @@ de fluidez es marginal: saturación.</div>
   </div>
 
 </div>
+
+<!-- =========================================================
+     ÍNDICE DE NAVEGACIÓN — JS toggle
+     ========================================================= -->
+<script>
+(function() {
+  const navBars = document.querySelectorAll('.nav-bar');
+
+  navBars.forEach(bar => {
+    const trigger = bar.querySelector('.nav-bar-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isActive = bar.classList.contains('active');
+
+      // Cerrar todas las demás
+      navBars.forEach(other => {
+        if (other !== bar) {
+          other.classList.remove('active');
+          const t = other.querySelector('.nav-bar-trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle la actual
+      if (isActive) {
+        bar.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        bar.classList.add('active');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Cerrar los menús al hacer click en un enlace
+  document.querySelectorAll('.nav-bar-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navBars.forEach(bar => {
+        bar.classList.remove('active');
+        const t = bar.querySelector('.nav-bar-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+
+  // Cerrar al hacer click fuera
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-bar')) {
+      navBars.forEach(bar => {
+        bar.classList.remove('active');
+        const t = bar.querySelector('.nav-bar-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+})();
+</script>
 
 <!-- =========================================================
      Logo 3D: Cubo negro con halo verde sutil
@@ -2367,81 +2351,4 @@ if (container) {
   const clock = new THREE.Clock();
   const LOOP = 12;
   function smoothstep(a, b, x) {
-    const t = Math.max(0, Math.min(1, (x - a) / (b - a)));
-    return t*t*(3 - 2*t);
-  }
-  const tmpA = new THREE.Vector3();
-  const tmpB = new THREE.Vector3();
-
-  function animate() {
-    const elapsed = clock.getElapsedTime();
-    const t = (elapsed % LOOP) / LOOP;
-
-    const spinX = elapsed * 0.55;
-    const spinY = elapsed * 0.85;
-    const spinZ = Math.sin(elapsed * 0.4) * 0.25;
-    cubeGroup.rotation.set(spinX, spinY, spinZ);
-    tesseractGroup.rotation.set(spinX, spinY, spinZ);
-
-    let tessOp = 0, cubeOp = 1, cubeScale = 1, unfold = 0;
-    if (t < 0.15) {
-      // solo cubo
-    } else if (t < 0.40) {
-      const u = smoothstep(0.15, 0.40, t);
-      tessOp = u; cubeOp = 1 - u*0.9; cubeScale = 1 - u*0.15; unfold = u;
-    } else if (t < 0.70) {
-      tessOp = 1; cubeOp = 0.1; cubeScale = 0.85; unfold = 1;
-    } else if (t < 0.90) {
-      const u = smoothstep(0.70, 0.90, t);
-      tessOp = 1 - u; cubeOp = 0.1 + u*0.9; cubeScale = 0.85 + u*0.15; unfold = 1 - u;
-    } else {
-      tessOp = 0; cubeOp = 1; cubeScale = 1; unfold = 0;
-    }
-
-    for (const m of cubeEdgeMeshes) m.material.opacity = cubeOp;
-    for (const g of cubeGlowMeshes) g.material.opacity = cubeOp * 0.18;
-    for (const m of tessEdgeMeshes) m.material.opacity = tessOp;
-    for (const g of tessGlowMeshes) g.material.opacity = tessOp * 0.18;
-    cubeEdgesGroup.scale.setScalar(cubeScale);
-
-    const baseA = elapsed * 0.75;
-    const ax = baseA + unfold * 1.3;
-    const ay = baseA * 0.65 + unfold * 1.0;
-    const az = baseA * 0.45 + unfold * 0.7;
-
-    for (let i = 0; i < E4.length; i++) {
-      const [a, b] = E4[i];
-      tmpA.copy(project4D(rot4D(V4[a], ax, ay, az), 3.5));
-      tmpB.copy(project4D(rot4D(V4[b], ax, ay, az), 3.5));
-      orientEdge(tessEdgeMeshes[i], tmpA, tmpB);
-      orientEdge(tessGlowMeshes[i], tmpA, tmpB);
-    }
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const s = getSize();
-      renderer.setSize(s, s, false);
-    }, 150);
-  });
-}
-</script>
-
-<!-- =========================================================
-     Simulador ASTM C494
-     ========================================================= -->
-<script>
-(function() {
-  const waterSlider = document.getElementById('waterSlider');
-  const aditivoSlider = document.getElementById('aditivoSlider');
-  const acSlider = document.getElementById('acSlider');
-  const tempSlider = document.getElementById('tempSlider');
-
-  const waterValue = document.getElementById('waterValue');
-  const aditivoValue = document.getElementById('aditivo
+    const t = Math.max(0, Math.min(1, (x -
