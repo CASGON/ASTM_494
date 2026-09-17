@@ -862,6 +862,23 @@
   .cemex-brand-text .cb-main { font-size: 1.05rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
   .cemex-brand-text .cb-sub { font-size: 0.62rem; font-weight: 600; color: #39ff14; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 2px; }
 
+  /* Panel de datos técnicos CEMEX */
+  .product-specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 25px;
+    padding: 18px 20px;
+    background: rgba(57, 255, 20, 0.03);
+    border: 1px solid rgba(57, 255, 20, 0.15);
+    border-radius: 12px;
+  }
+
+  .product-spec { display: flex; flex-direction: column; gap: 4px; }
+  .product-spec .ps-label { font-size: 0.62rem; font-weight: 700; color: #39ff14; text-transform: uppercase; letter-spacing: 0.15em; }
+  .product-spec .ps-value { font-size: 0.88rem; font-weight: 700; color: #e0e0e0; line-height: 1.35; }
+  .product-spec .ps-value.highlight { color: #baff72; font-size: 1rem; }
+
   /* Comparativa de bustos */
   .sculpture-compare {
     display: grid;
@@ -899,7 +916,7 @@
     border-radius: 12px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    z-index: 2;
+    z-index: 3;
   }
 
   .sculpture-card.with .sculpture-badge {
@@ -925,9 +942,64 @@
     justify-content: center;
     overflow: hidden;
     position: relative;
+    transition: transform 0.5s ease;
   }
 
   .sculpture-svg svg { width: 100%; height: 100%; }
+
+  /* Imágenes de bustos CEMEX */
+  .sculpture-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+  }
+
+  /* Recorta cada lado de la imagen para mostrar un busto distinto */
+  .sculpture-photo.left {
+    object-position: 25% center;
+  }
+
+  .sculpture-photo.right {
+    object-position: 75% center;
+  }
+
+  .sculpture-card:hover .sculpture-photo {
+    transform: scale(1.05);
+  }
+
+  /* Overlay verde/rojo sutil sobre la foto */
+  .sculpture-card.with .sculpture-svg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(57, 255, 20, 0.12), transparent 60%);
+    pointer-events: none;
+    border-radius: 8px;
+    z-index: 2;
+  }
+
+  .sculpture-card.without .sculpture-svg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 77, 77, 0.12), transparent 60%);
+    pointer-events: none;
+    border-radius: 8px;
+    z-index: 2;
+  }
+
+  /* Fallback SVG cuando no hay imagen */
+  .fallback-svg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .sculpture-title {
     font-size: 0.88rem;
@@ -977,23 +1049,6 @@
     0%, 100% { filter: brightness(1); }
     50% { filter: brightness(1.4); }
   }
-
-  /* Panel de datos técnicos CEMEX */
-  .product-specs {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-    margin-bottom: 25px;
-    padding: 18px 20px;
-    background: rgba(57, 255, 20, 0.03);
-    border: 1px solid rgba(57, 255, 20, 0.15);
-    border-radius: 12px;
-  }
-
-  .product-spec { display: flex; flex-direction: column; gap: 4px; }
-  .product-spec .ps-label { font-size: 0.62rem; font-weight: 700; color: #39ff14; text-transform: uppercase; letter-spacing: 0.15em; }
-  .product-spec .ps-value { font-size: 0.88rem; font-weight: 700; color: #e0e0e0; line-height: 1.35; }
-  .product-spec .ps-value.highlight { color: #baff72; font-size: 1rem; }
 
   .xr-cta {
     display: flex;
@@ -1081,7 +1136,7 @@
 
   .xr-link.secondary svg { fill: var(--fmp-green); }
 
-  /* Animaciones escultura */
+  /* Animaciones escultura (para el SVG fallback) */
   @keyframes surfaceShine {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
@@ -1654,7 +1709,13 @@ de fluidez es marginal: saturación.</div>
       <div class="sculpture-card with">
         <span class="sculpture-badge">Con aditivo</span>
         <div class="sculpture-svg">
-          <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid meet" class="glow-green">
+          <img 
+            src="TemplateData/cemex-busts.jpg" 
+            alt="Busto de concreto arquitectónico ultra blanco con superplastificante CEMEX"
+            class="sculpture-photo left"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid meet" class="glow-green fallback-svg" style="display:none;">
             <rect x="70" y="200" width="160" height="30" fill="#1a1a1a" stroke="#39ff14" stroke-width="1.5" rx="3"/>
             <text x="150" y="220" fill="#39ff14" font-family="Inter" font-size="7" font-weight="600" text-anchor="middle">CONCRETO ARQUITECTÓNICO ULTRA BLANCO</text>
             <ellipse cx="150" cy="120" rx="45" ry="60" fill="#0a0a0a" stroke="#39ff14" stroke-width="2" class="shine-anim"/>
@@ -1683,7 +1744,13 @@ de fluidez es marginal: saturación.</div>
       <div class="sculpture-card without">
         <span class="sculpture-badge">Sin aditivo</span>
         <div class="sculpture-svg">
-          <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid meet" class="glow-red">
+          <img 
+            src="TemplateData/cemex-busts.jpg" 
+            alt="Busto de concreto arquitectónico sin aditivo"
+            class="sculpture-photo right"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid meet" class="glow-red fallback-svg" style="display:none;">
             <rect x="70" y="200" width="160" height="30" fill="#1a1a1a" stroke="#ff4d4d" stroke-width="1.5" rx="3"/>
             <text x="150" y="220" fill="#ff4d4d" font-family="Inter" font-size="7" font-weight="600" text-anchor="middle">CONCRETO SIN ADITIVO</text>
             <ellipse cx="150" cy="120" rx="45" ry="60" fill="#0a0a0a" stroke="#ff4d4d" stroke-width="2" class="grain-anim"/>
@@ -1691,13 +1758,9 @@ de fluidez es marginal: saturación.</div>
             <ellipse cx="165" cy="108" rx="6" ry="4" fill="#ff4d4d" class="crack-anim" style="animation-delay:0.5s"/>
             <path d="M 150 115 L 146 133 L 154 133 Z" fill="none" stroke="#ff4d4d" stroke-width="1.2"/>
             <path d="M 138 150 Q 150 158 162 150" fill="none" stroke="#ff4d4d" stroke-width="1.4"/>
-            <path d="M 105 100 Q 100 115 105 130" fill="none" stroke="#ff4d4d" stroke-width="0.9" class="crack-anim"/>
-            <path d="M 195 100 Q 200 115 195 130" fill="none" stroke="#ff4d4d" stroke-width="0.9" class="crack-anim" style="animation-delay:0.3s"/>
             <circle class="bubble-anim" cx="128" cy="125" r="3.5" fill="none" stroke="#ff4d4d" stroke-width="0.9"/>
             <circle class="bubble-anim" cx="172" cy="135" r="3" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:0.6s"/>
             <circle class="bubble-anim" cx="155" cy="150" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:1.2s"/>
-            <circle class="bubble-anim" cx="122" cy="85" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:0.9s"/>
-            <circle class="bubble-anim" cx="178" cy="95" r="2" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:1.5s"/>
             <path d="M 120 88 L 124 95 L 119 102" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim"/>
             <path d="M 180 95 L 176 103 L 181 110" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim" style="animation-delay:0.4s"/>
             <text x="150" y="238" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie rugosa · Burbujas y grietas</text>
