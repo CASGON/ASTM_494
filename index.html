@@ -511,7 +511,7 @@
   .info-panel ul li::before { content: '▸'; position: absolute; left: 0; color: var(--fmp-green); font-weight: 700; }
   .info-panel ul li strong { color: var(--fmp-green-light); font-weight: 700; }
 
-  /* ================= FÓRMULAS Y TRAZABILIDAD ASTM ================= */
+  /* ================= FÓRMULAS ASTM ================= */
   .formulas-section {
     margin-top: clamp(30px, 5vw, 50px);
     background: #0a0a0a;
@@ -707,7 +707,7 @@
 
   .example-svg {
     width: 100%;
-    height: 180px;
+    height: 200px;
     margin-bottom: 15px;
     background: #0a0a0a;
     border-radius: 8px;
@@ -720,40 +720,56 @@
 
   .example-svg svg { width: 100%; height: 100%; }
 
+  /* ═══ ANIMACIONES MEJORADAS ═══ */
   @keyframes dropFall {
-    0% { transform: translateY(-20px); opacity: 0; }
-    20% { opacity: 1; }
-    100% { transform: translateY(50px); opacity: 0; }
+    0% { transform: translateY(-30px) scale(0.5); opacity: 0; }
+    30% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { transform: translateY(60px) scale(0.8); opacity: 0; }
   }
 
   @keyframes particleSpread {
     0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(var(--dx, 8px), var(--dy, -4px)); }
+    50% { transform: translate(var(--dx, 12px), var(--dy, -8px)); }
   }
 
   @keyframes particleClose {
     0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(var(--cx, -6px), var(--cy, 4px)); }
+    50% { transform: translate(var(--cx, -10px), var(--cy, 6px)); }
   }
 
   @keyframes dollarPulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
   }
 
   @keyframes resistanceGrow {
-    from { width: 40%; }
-    to { width: 85%; }
+    0% { width: 30%; }
+    100% { width: 90%; }
   }
 
-  .drop-anim { animation: dropFall 2s infinite ease-in; }
-  .drop-anim:nth-child(2) { animation-delay: 0.4s; }
-  .drop-anim:nth-child(3) { animation-delay: 0.8s; }
-  .particle-spread { animation: particleSpread 3s infinite ease-in-out; }
-  .particle-close { animation: particleClose 3s infinite ease-in-out; }
-  .dollar-anim { animation: dollarPulse 1.5s infinite ease-in-out; }
-  .dollar-anim:nth-child(2) { animation-delay: 0.3s; }
-  .dollar-anim:nth-child(3) { animation-delay: 0.6s; }
+  @keyframes ripple {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.8; }
+    100% { transform: translateY(-40px); opacity: 0; }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+  }
+
+  .drop-anim { animation: dropFall 2.5s infinite ease-in; }
+  .particle-spread { animation: particleSpread 2.5s infinite ease-in-out; }
+  .particle-close { animation: particleClose 2.5s infinite ease-in-out; }
+  .dollar-anim { animation: dollarPulse 1.8s infinite ease-in-out; }
+  .ripple-anim { animation: ripple 2.5s infinite ease-out; }
+  .float-anim { animation: floatUp 3s infinite ease-out; }
+  .shake-anim { animation: shake 0.5s infinite ease-in-out; }
 
   .example-card .ex-desc {
     font-size: 0.82rem;
@@ -786,7 +802,7 @@
     border-color: rgba(255, 170, 0, 0.4);
   }
 
-  /* ================= SECCIÓN XR — ESCULTURA CON/SIN ADITIVO ================= */
+  /* ================= SECCIÓN XR — ESCULTURA ================= */
   .xr-access-section {
     margin-top: clamp(30px, 5vw, 50px);
     padding: clamp(25px, 4vw, 45px) clamp(18px, 3vw, 35px);
@@ -840,22 +856,24 @@
 
   .xr-header h2 span { color: var(--fmp-green); }
 
+  /* Logo CEMEX MEJORADO */
   .cemex-brand {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 18px;
-    background: rgba(57, 255, 20, 0.04);
-    border: 1px solid rgba(57, 255, 20, 0.25);
-    border-radius: 10px;
+    gap: 14px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, rgba(57, 255, 20, 0.06), rgba(57, 255, 20, 0.02));
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    border-radius: 12px;
     flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.1);
   }
 
-  .cemex-logo-svg { width: 80px; height: 30px; }
+  .cemex-logo-svg { width: 100px; height: 36px; }
 
   .cemex-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-  .cemex-brand-text .cb-main { font-size: 0.9rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
-  .cemex-brand-text .cb-sub { font-size: 0.6rem; font-weight: 600; color: #888; letter-spacing: 0.1em; text-transform: uppercase; }
+  .cemex-brand-text .cb-main { font-size: 1rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
+  .cemex-brand-text .cb-sub { font-size: 0.62rem; font-weight: 600; color: #39ff14; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 2px; }
 
   .sculpture-compare {
     display: grid;
@@ -910,7 +928,7 @@
 
   .sculpture-svg {
     width: 100%;
-    height: 200px;
+    height: 220px;
     margin-bottom: 14px;
     background: #0a0a0a;
     border-radius: 8px;
@@ -942,7 +960,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 0.7rem;
     font-weight: 700;
     color: #888;
@@ -950,20 +968,26 @@
     letter-spacing: 0.08em;
   }
 
-  .detail-bar-track { flex: 1; height: 6px; background: #1a1a1a; border-radius: 3px; overflow: hidden; }
+  .detail-bar-track { flex: 1; height: 8px; background: #1a1a1a; border-radius: 4px; overflow: hidden; }
 
-  .detail-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+  .detail-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
 
   .sculpture-card.with .detail-bar-fill {
     width: 95%;
     background: linear-gradient(90deg, #20d23d, var(--fmp-green));
     box-shadow: 0 0 8px var(--fmp-green);
+    animation: shineBar 2s infinite ease-in-out;
   }
 
   .sculpture-card.without .detail-bar-fill {
     width: 35%;
     background: linear-gradient(90deg, #661111, #ff4d4d);
     box-shadow: 0 0 8px #ff4d4d;
+  }
+
+  @keyframes shineBar {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.4); }
   }
 
   .xr-cta {
@@ -1052,30 +1076,44 @@
 
   .xr-link.secondary svg { fill: var(--fmp-green); }
 
+  /* Animaciones escultura */
   @keyframes surfaceShine {
     0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.9; }
+    50% { opacity: 1; }
   }
 
   @keyframes crackPulse {
-    0%, 100% { opacity: 0.6; }
+    0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
   }
 
   @keyframes detailGlow {
-    0%, 100% { filter: drop-shadow(0 0 2px rgba(57, 255, 20, 0.4)); }
-    50% { filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.9)); }
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(57, 255, 20, 0.5)); }
+    50% { filter: drop-shadow(0 0 12px rgba(57, 255, 20, 1)); }
   }
 
   @keyframes detailGlowRed {
-    0%, 100% { filter: drop-shadow(0 0 2px rgba(255, 77, 77, 0.3)); }
-    50% { filter: drop-shadow(0 0 6px rgba(255, 77, 77, 0.7)); }
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 77, 77, 0.4)); }
+    50% { filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.9)); }
   }
 
-  .shine-anim { animation: surfaceShine 3s infinite ease-in-out; }
-  .crack-anim { animation: crackPulse 2s infinite ease-in-out; }
+  @keyframes bubbleFloat {
+    0% { transform: translateY(0); opacity: 0.8; }
+    100% { transform: translateY(-15px); opacity: 0; }
+  }
+
+  @keyframes grainShake {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(0.5px, -0.5px); }
+    66% { transform: translate(-0.5px, 0.5px); }
+  }
+
+  .shine-anim { animation: surfaceShine 2.5s infinite ease-in-out; }
+  .crack-anim { animation: crackPulse 1.8s infinite ease-in-out; }
   .glow-green { animation: detailGlow 3s infinite ease-in-out; }
   .glow-red { animation: detailGlowRed 2.5s infinite ease-in-out; }
+  .bubble-anim { animation: bubbleFloat 3s infinite ease-out; }
+  .grain-anim { animation: grainShake 0.4s infinite ease-in-out; }
 
   .footer { margin-top: clamp(30px, 5vw, 50px); text-align: center; padding-top: 25px; border-top: 1px solid rgba(57, 255, 20, 0.1); color: #666; font-size: clamp(0.75rem, 1.3vw, 0.85rem); line-height: 1.6; }
   .footer strong { color: var(--fmp-green); }
@@ -1363,7 +1401,7 @@
     </div>
   </div>
 
-  <!-- ================= FÓRMULAS Y TRAZABILIDAD ASTM ================= -->
+  <!-- ================= FÓRMULAS ================= -->
   <div class="formulas-section">
     <h2>Fórmulas y <span>Trazabilidad ASTM C494</span></h2>
     <p>Cada cálculo del simulador está respaldado por la norma. Aquí te mostramos el origen, la fórmula exacta y un ejemplo.</p>
@@ -1468,24 +1506,37 @@ de fluidez es marginal: saturación.</div>
 
     <div class="examples-grid">
 
+      <!-- EJEMPLO 1: Solo agregar plastificante -->
       <div class="example-card">
         <div class="ex-title">1. Solo agregar plastificante</div>
         <div class="example-svg">
-          <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
-            <rect x="20" y="120" width="260" height="40" fill="#1a1a1a" stroke="#39ff14" stroke-width="1"/>
-            <circle class="drop-anim" cx="80" cy="80" r="4" fill="#39ff14"/>
-            <circle class="drop-anim" cx="80" cy="80" r="3" fill="#baff72"/>
-            <circle class="drop-anim" cx="80" cy="80" r="2" fill="#ffffff"/>
-            <circle class="particle-spread" cx="150" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-            <circle class="particle-spread" cx="180" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--dx:12px;--dy:-6px"/>
-            <circle class="particle-spread" cx="210" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--dx:-8px;--dy:-8px"/>
-            <circle class="particle-spread" cx="240" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--dx:10px;--dy:-4px"/>
-            <text x="20" y="30" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">a/mc = IGUAL</text>
-            <text x="20" y="48" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Fluidez ↑↑</text>
-            <text x="20" y="66" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Resistencia = IGUAL</text>
-            <text x="220" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
-            <text x="240" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
-            <text x="260" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
+          <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+            <!-- Contenedor de mezcla -->
+            <rect x="30" y="130" width="240" height="50" fill="#1a1a1a" stroke="#39ff14" stroke-width="1.5" rx="4"/>
+            <!-- Ondas de mezcla -->
+            <path d="M 30 145 Q 60 140 90 145 T 150 145 T 210 145 T 270 145" fill="none" stroke="#39ff14" stroke-width="1" opacity="0.5"/>
+            <!-- Gotas de aditivo cayendo -->
+            <g>
+              <circle class="drop-anim" cx="80" cy="80" r="6" fill="#39ff14"/>
+              <circle class="drop-anim" cx="80" cy="80" r="4" fill="#baff72" style="animation-delay: 0.3s"/>
+              <circle class="drop-anim" cx="80" cy="80" r="2" fill="#ffffff" style="animation-delay: 0.6s"/>
+            </g>
+            <!-- Ondas expansivas (ripple) -->
+            <circle class="ripple-anim" cx="80" cy="150" r="15" fill="none" stroke="#39ff14" stroke-width="1.5"/>
+            <circle class="ripple-anim" cx="80" cy="150" r="15" fill="none" stroke="#39ff14" stroke-width="1.5" style="animation-delay: 0.8s"/>
+            <!-- Partículas que se dispersan (más fluidez) -->
+            <circle class="particle-spread" cx="160" cy="155" r="7" fill="none" stroke="#39ff14" stroke-width="1.8"/>
+            <circle class="particle-spread" cx="190" cy="155" r="7" fill="none" stroke="#39ff14" stroke-width="1.8" style="--dx:15px;--dy:-8px;animation-delay:0.2s"/>
+            <circle class="particle-spread" cx="220" cy="155" r="7" fill="none" stroke="#39ff14" stroke-width="1.8" style="--dx:-10px;--dy:-10px;animation-delay:0.4s"/>
+            <circle class="particle-spread" cx="250" cy="155" r="7" fill="none" stroke="#39ff14" stroke-width="1.8" style="--dx:12px;--dy:-6px;animation-delay:0.6s"/>
+            <!-- Etiquetas -->
+            <text x="20" y="25" fill="#39ff14" font-family="Inter" font-size="11" font-weight="700">a/mc = IGUAL</text>
+            <text x="20" y="45" fill="#39ff14" font-family="Inter" font-size="11" font-weight="700">Fluidez ↑↑</text>
+            <text x="20" y="65" fill="#39ff14" font-family="Inter" font-size="11" font-weight="700">Resistencia = IGUAL</text>
+            <!-- Símbolos $ -->
+            <text x="215" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="24" font-weight="900">$</text>
+            <text x="240" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="24" font-weight="900" style="animation-delay:0.3s">$</text>
+            <text x="265" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="24" font-weight="900" style="animation-delay:0.6s">$</text>
           </svg>
         </div>
         <p class="ex-desc">Agregar plastificante sin tocar agua ni cemento. Mejora la fluidez, mantiene a/mc y resistencia, pero cuesta más.</p>
@@ -1496,26 +1547,36 @@ de fluidez es marginal: saturación.</div>
         </div>
       </div>
 
+      <!-- EJEMPLO 2: Plastificante + reducir agua -->
       <div class="example-card">
         <div class="ex-title">2. Plastificante + reducir agua</div>
         <div class="example-svg">
-          <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
-            <rect x="20" y="120" width="260" height="40" fill="#1a1a1a" stroke="#39ff14" stroke-width="1"/>
-            <line x1="40" y1="110" x2="120" y2="110" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="4 2"/>
-            <text x="40" y="102" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700">Agua reducida</text>
-            <circle class="particle-close" cx="150" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-            <circle class="particle-close" cx="172" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--cx:-6px;--cy:-4px"/>
-            <circle class="particle-close" cx="194" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--cx:4px;--cy:6px"/>
-            <circle class="particle-close" cx="216" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--cx:-5px;--cy:5px"/>
-            <circle class="particle-close" cx="238" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--cx:6px;--cy:-4px"/>
-            <rect x="40" y="40" width="60" height="8" fill="none" stroke="#39ff14" stroke-width="1"/>
-            <rect x="40" y="40" width="51" height="8" fill="#39ff14" opacity="0.8" style="animation: resistanceGrow 3s infinite alternate ease-in-out"/>
-            <text x="110" y="48" fill="#39ff14" font-family="Inter" font-size="9" font-weight="700">Resistencia ↑↑</text>
-            <text x="20" y="30" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">a/mc ↓↓</text>
-            <text x="20" y="66" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Fluidez = IGUAL</text>
-            <text x="220" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
-            <text x="240" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
-            <text x="260" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
+          <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+            <!-- Contenedor -->
+            <rect x="30" y="130" width="240" height="50" fill="#1a1a1a" stroke="#39ff14" stroke-width="1.5" rx="4"/>
+            <!-- Indicador agua reducida -->
+            <line x1="40" y1="118" x2="140" y2="118" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="5 3"/>
+            <text x="40" y="110" fill="#ff4d4d" font-family="Inter" font-size="10" font-weight="700">Agua reducida ↓↓</text>
+            <!-- Gotas -->
+            <circle class="drop-anim" cx="80" cy="90" r="5" fill="#39ff14"/>
+            <!-- Partículas que se ACERCAN (mayor densidad) -->
+            <circle class="particle-close" cx="160" cy="150" r="7" fill="none" stroke="#39ff14" stroke-width="1.8"/>
+            <circle class="particle-close" cx="182" cy="150" r="7" fill="none" stroke="#39ff14" stroke-width="1.8" style="--cx:-8px;--cy:-5px;animation-delay:0.2s"/>
+            <circle class="particle-close" cx="204" cy="150" r="7" fill="none" stroke="#39ff14" stroke-width="1.8" style="--cx:6px;--cy:7px;animation-delay:0.4s"/>
+            <circle class="particle-close" cx="226" cy="150" r="7" fill="none" stroke="#39ff14" stroke-width="1.8" style="--cx:-7px;--cy:6px;animation-delay:0.6s"/>
+            <circle class="particle-close" cx="248" cy="150" r="7" fill="none" stroke="#39ff14" stroke-width="1.8" style="--cx:8px;--cy:-5px;animation-delay:0.8s"/>
+            <!-- Barra de resistencia creciendo -->
+            <text x="40" y="55" fill="#39ff14" font-family="Inter" font-size="9" font-weight="700">Resistencia:</text>
+            <rect x="105" y="48" width="100" height="10" fill="none" stroke="#39ff14" stroke-width="1"/>
+            <rect x="105" y="48" width="80" height="10" fill="#39ff14" opacity="0.85" style="animation: resistanceGrow 2.5s infinite alternate ease-in-out"/>
+            <text x="215" y="58" fill="#39ff14" font-family="Inter" font-size="11" font-weight="800">↑↑</text>
+            <!-- Etiquetas -->
+            <text x="20" y="25" fill="#39ff14" font-family="Inter" font-size="11" font-weight="700">a/mc ↓↓</text>
+            <text x="20" y="85" fill="#39ff14" font-family="Inter" font-size="11" font-weight="700">Fluidez = IGUAL</text>
+            <!-- $ -->
+            <text x="215" y="25" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="24" font-weight="900">$</text>
+            <text x="240" y="25" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="24" font-weight="900" style="animation-delay:0.3s">$</text>
+            <text x="265" y="25" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="24" font-weight="900" style="animation-delay:0.6s">$</text>
           </svg>
         </div>
         <p class="ex-desc">Plastificante + reducir agua. Menor a/mc, misma fluidez, mayor resistencia. Sigue costando igual.</p>
@@ -1527,24 +1588,28 @@ de fluidez es marginal: saturación.</div>
         </div>
       </div>
 
+      <!-- EJEMPLO 3: Plastificante + menos agua + menos cemento -->
       <div class="example-card">
         <div class="ex-title">3. Plastificante + menos agua + menos cemento</div>
         <div class="example-svg">
-          <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
-            <rect x="20" y="130" width="260" height="30" fill="#1a1a1a" stroke="#39ff14" stroke-width="1"/>
-            <line x1="40" y1="120" x2="100" y2="120" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="4 2"/>
-            <text x="40" y="112" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700">Agua ↓</text>
-            <line x1="180" y1="120" x2="240" y2="120" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="4 2"/>
-            <text x="180" y="112" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700">Cemento ↓</text>
-            <circle cx="140" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-            <circle cx="160" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-            <circle cx="180" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-            <circle cx="200" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-            <circle cx="220" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
-            <text x="20" y="30" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">a/mc = IGUAL</text>
-            <text x="20" y="48" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Fluidez = IGUAL</text>
-            <text x="20" y="66" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Resistencia = IGUAL</text>
-            <text x="240" y="30" class="dollar-anim" fill="#39ff14" font-family="Inter" font-size="18" font-weight="900">$</text>
+          <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+            <!-- Contenedor más pequeño (menos material) -->
+            <rect x="50" y="145" width="200" height="35" fill="#1a1a1a" stroke="#39ff14" stroke-width="1.5" rx="4"/>
+            <!-- Indicadores -->
+            <line x1="55" y1="135" x2="115" y2="135" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="5 3"/>
+            <text x="55" y="127" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700">Agua ↓</text>
+            <line x1="185" y1="135" x2="245" y2="135" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="5 3"/>
+            <text x="185" y="127" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700">Cemento ↓</text>
+            <!-- Partículas que se mantienen dispersas -->
+            <circle cx="120" cy="162" r="6" fill="none" stroke="#39ff14" stroke-width="1.8" class="particle-spread" style="--dx:5px;--dy:-3px"/>
+            <circle cx="150" cy="162" r="6" fill="none" stroke="#39ff14" stroke-width="1.8" class="particle-spread" style="--dx:-4px;--dy:4px;animation-delay:0.3s"/>
+            <circle cx="180" cy="162" r="6" fill="none" stroke="#39ff14" stroke-width="1.8" class="particle-spread" style="--dx:6px;--dy:3px;animation-delay:0.6s"/>
+            <!-- Etiquetas -->
+            <text x="20" y="25" fill="#39ff14" font-family="Inter" font-size="11" font-weight="700">a/mc = IGUAL</text>
+            <text x="20" y="45" fill="#39ff14" font-family="Inter" font-size="11" font-weight="700">Fluidez = IGUAL</text>
+            <text x="20" y="65" fill="#39ff14" font-family="Inter" font-size="11" font-weight="700">Resistencia = IGUAL</text>
+            <!-- Un solo $ -->
+            <text x="240" y="30" class="dollar-anim" fill="#39ff14" font-family="Inter" font-size="30" font-weight="900">$</text>
           </svg>
         </div>
         <p class="ex-desc">Plastificante + menos agua + menos cemento. Mismas propiedades con menor costo. La estrategia de optimización por excelencia.</p>
@@ -1559,7 +1624,7 @@ de fluidez es marginal: saturación.</div>
     </div>
   </div>
 
-  <!-- ================= SECCIÓN XR — ESCULTURA CON/SIN ADITIVO ================= -->
+  <!-- ================= SECCIÓN XR — ESCULTURA ================= -->
   <div class="xr-access-section">
     <div class="xr-header">
       <div class="xr-header-left">
@@ -1567,10 +1632,13 @@ de fluidez es marginal: saturación.</div>
         <h2>Detalle de <span>Escultura Arquitectónica</span> en XR</h2>
       </div>
       <div class="cemex-brand">
-        <svg class="cemex-logo-svg" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="0" width="8" height="30" fill="#e30613" transform="skewX(-10)"/>
-          <rect x="10" y="0" width="8" height="30" fill="#003da5" transform="skewX(-10)"/>
-          <text x="26" y="22" font-family="Inter, sans-serif" font-size="18" font-weight="900" fill="#ffffff" letter-spacing="-0.5">CEMEX</text>
+        <svg class="cemex-logo-svg" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+          <!-- Barra roja inclinada -->
+          <polygon points="8,4 22,4 14,36 0,36" fill="#e30613"/>
+          <!-- Barra azul inclinada -->
+          <polygon points="24,4 38,4 30,36 16,36" fill="#003da5"/>
+          <!-- Texto CEMEX -->
+          <text x="44" y="28" font-family="Inter, sans-serif" font-size="20" font-weight="900" fill="#ffffff" letter-spacing="-0.8">CEMEX</text>
         </svg>
         <div class="cemex-brand-text">
           <span class="cb-main">CEMEX</span>
@@ -1585,22 +1653,33 @@ de fluidez es marginal: saturación.</div>
 
     <div class="sculpture-compare">
 
+      <!-- CON ADITIVO -->
       <div class="sculpture-card with">
         <span class="sculpture-badge">Con aditivo</span>
         <div class="sculpture-svg">
-          <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet" class="glow-green">
-            <rect x="80" y="160" width="140" height="30" fill="#1a1a1a" stroke="#39ff14" stroke-width="1.5"/>
-            <ellipse cx="150" cy="100" rx="38" ry="50" fill="#0a0a0a" stroke="#39ff14" stroke-width="1.8"/>
-            <ellipse cx="138" cy="90" rx="4" ry="2.5" fill="#39ff14" class="shine-anim"/>
-            <ellipse cx="162" cy="90" rx="4" ry="2.5" fill="#39ff14" class="shine-anim"/>
-            <path d="M 150 98 L 148 110 L 152 110 Z" fill="none" stroke="#39ff14" stroke-width="1"/>
-            <path d="M 142 122 Q 150 128 158 122" fill="none" stroke="#39ff14" stroke-width="1.2"/>
-            <path d="M 112 80 Q 108 95 112 110" fill="none" stroke="#39ff14" stroke-width="0.8" class="shine-anim"/>
-            <path d="M 188 80 Q 192 95 188 110" fill="none" stroke="#39ff14" stroke-width="0.8" class="shine-anim"/>
-            <path d="M 120 60 Q 150 50 180 60" fill="none" stroke="#39ff14" stroke-width="0.8"/>
-            <path d="M 115 70 Q 150 58 185 70" fill="none" stroke="#39ff14" stroke-width="0.6" class="shine-anim"/>
-            <ellipse cx="135" cy="80" rx="6" ry="3" fill="#baff72" opacity="0.4" class="shine-anim"/>
-            <text x="150" y="188" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700" text-anchor="middle">Superficie lisa · detalle nítido</text>
+          <svg viewBox="0 0 300 220" preserveAspectRatio="xMidYMid meet" class="glow-green">
+            <!-- Pedestal -->
+            <rect x="70" y="180" width="160" height="30" fill="#1a1a1a" stroke="#39ff14" stroke-width="1.5" rx="3"/>
+            <text x="150" y="200" fill="#39ff14" font-family="Inter" font-size="8" font-weight="600" text-anchor="middle">CONCRETO ARQUITECTÓNICO</text>
+            <!-- Cabeza/escultura -->
+            <ellipse cx="150" cy="110" rx="42" ry="55" fill="#0a0a0a" stroke="#39ff14" stroke-width="2" class="shine-anim"/>
+            <!-- Ojos -->
+            <ellipse cx="136" cy="98" rx="5" ry="3" fill="#39ff14" class="shine-anim"/>
+            <ellipse cx="164" cy="98" rx="5" ry="3" fill="#39ff14" class="shine-anim" style="animation-delay:0.5s"/>
+            <!-- Nariz -->
+            <path d="M 150 105 L 147 120 L 153 120 Z" fill="none" stroke="#39ff14" stroke-width="1.2"/>
+            <!-- Boca -->
+            <path d="M 140 135 Q 150 143 160 135" fill="none" stroke="#39ff14" stroke-width="1.4"/>
+            <!-- Cabello/detalles finos -->
+            <path d="M 108 90 Q 104 105 108 120" fill="none" stroke="#39ff14" stroke-width="0.9" class="shine-anim"/>
+            <path d="M 192 90 Q 196 105 192 120" fill="none" stroke="#39ff14" stroke-width="0.9" class="shine-anim" style="animation-delay:0.3s"/>
+            <path d="M 115 65 Q 150 52 185 65" fill="none" stroke="#39ff14" stroke-width="0.9"/>
+            <path d="M 110 78 Q 150 62 190 78" fill="none" stroke="#39ff14" stroke-width="0.7" class="shine-anim" style="animation-delay:0.6s"/>
+            <path d="M 118 55 Q 150 45 182 55" fill="none" stroke="#39ff14" stroke-width="0.7"/>
+            <!-- Reflejo de brillo -->
+            <ellipse cx="132" cy="82" rx="8" ry="4" fill="#baff72" opacity="0.35" class="shine-anim" style="animation-delay:0.4s"/>
+            <!-- Etiqueta -->
+            <text x="150" y="215" fill="#39ff14" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie lisa · Detalle nítido</text>
           </svg>
         </div>
         <div class="sculpture-title">Con superplastificante</div>
@@ -1612,24 +1691,37 @@ de fluidez es marginal: saturación.</div>
         </div>
       </div>
 
+      <!-- SIN ADITIVO -->
       <div class="sculpture-card without">
         <span class="sculpture-badge">Sin aditivo</span>
         <div class="sculpture-svg">
-          <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet" class="glow-red">
-            <rect x="80" y="160" width="140" height="30" fill="#1a1a1a" stroke="#ff4d4d" stroke-width="1.5"/>
-            <ellipse cx="150" cy="100" rx="38" ry="50" fill="#0a0a0a" stroke="#ff4d4d" stroke-width="1.8"/>
-            <ellipse cx="138" cy="90" rx="5" ry="3" fill="#ff4d4d" class="crack-anim"/>
-            <ellipse cx="162" cy="90" rx="5" ry="3" fill="#ff4d4d" class="crack-anim"/>
-            <path d="M 150 98 L 147 112 L 153 112 Z" fill="none" stroke="#ff4d4d" stroke-width="1"/>
-            <path d="M 140 124 Q 150 130 160 124" fill="none" stroke="#ff4d4d" stroke-width="1.2"/>
-            <path d="M 112 80 Q 108 95 112 110" fill="none" stroke="#ff4d4d" stroke-width="0.8"/>
-            <path d="M 188 80 Q 192 95 188 110" fill="none" stroke="#ff4d4d" stroke-width="0.8"/>
-            <circle cx="130" cy="105" r="3" fill="none" stroke="#ff4d4d" stroke-width="0.8" class="crack-anim"/>
-            <circle cx="170" cy="115" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.8" class="crack-anim"/>
-            <circle cx="155" cy="130" r="2" fill="none" stroke="#ff4d4d" stroke-width="0.8" class="crack-anim"/>
-            <path d="M 125 75 L 128 82 L 124 88" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim"/>
-            <path d="M 175 82 L 172 90 L 176 96" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim"/>
-            <text x="150" y="188" fill="#ff4d4d" font-family="Inter" font-size="10" font-weight="700" text-anchor="middle">Superficie rugosa · burbujas</text>
+          <svg viewBox="0 0 300 220" preserveAspectRatio="xMidYMid meet" class="glow-red">
+            <!-- Pedestal -->
+            <rect x="70" y="180" width="160" height="30" fill="#1a1a1a" stroke="#ff4d4d" stroke-width="1.5" rx="3"/>
+            <text x="150" y="200" fill="#ff4d4d" font-family="Inter" font-size="8" font-weight="600" text-anchor="middle">CONCRETO SIN ADITIVO</text>
+            <!-- Cabeza/escultura con defectos -->
+            <ellipse cx="150" cy="110" rx="42" ry="55" fill="#0a0a0a" stroke="#ff4d4d" stroke-width="2" class="grain-anim"/>
+            <!-- Ojos gruesos -->
+            <ellipse cx="136" cy="98" rx="6" ry="4" fill="#ff4d4d" class="crack-anim"/>
+            <ellipse cx="164" cy="98" rx="6" ry="4" fill="#ff4d4d" class="crack-anim" style="animation-delay:0.5s"/>
+            <!-- Nariz -->
+            <path d="M 150 105 L 146 122 L 154 122 Z" fill="none" stroke="#ff4d4d" stroke-width="1.2"/>
+            <!-- Boca -->
+            <path d="M 138 138 Q 150 145 162 138" fill="none" stroke="#ff4d4d" stroke-width="1.4"/>
+            <!-- Grietas -->
+            <path d="M 108 90 Q 104 105 108 120" fill="none" stroke="#ff4d4d" stroke-width="0.9" class="crack-anim"/>
+            <path d="M 192 90 Q 196 105 192 120" fill="none" stroke="#ff4d4d" stroke-width="0.9" class="crack-anim" style="animation-delay:0.3s"/>
+            <!-- Burbujas visibles (animación flotante) -->
+            <circle class="bubble-anim" cx="130" cy="115" r="3.5" fill="none" stroke="#ff4d4d" stroke-width="0.9"/>
+            <circle class="bubble-anim" cx="170" cy="125" r="3" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:0.6s"/>
+            <circle class="bubble-anim" cx="155" cy="140" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:1.2s"/>
+            <circle class="bubble-anim" cx="125" cy="75" r="2.5" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:0.9s"/>
+            <circle class="bubble-anim" cx="175" cy="85" r="2" fill="none" stroke="#ff4d4d" stroke-width="0.9" style="animation-delay:1.5s"/>
+            <!-- Grietas secundarias -->
+            <path d="M 122 78 L 126 85 L 121 92" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim"/>
+            <path d="M 178 85 L 174 93 L 179 100" fill="none" stroke="#ff4d4d" stroke-width="1" class="crack-anim" style="animation-delay:0.4s"/>
+            <!-- Etiqueta -->
+            <text x="150" y="215" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle">Superficie rugosa · Burbujas y grietas</text>
           </svg>
         </div>
         <div class="sculpture-title">Sin superplastificante</div>
@@ -1842,7 +1934,7 @@ if (container) {
 </script>
 
 <!-- =========================================================
-     Simulador ASTM C494 con valores óptimos
+     Simulador ASTM C494
      ========================================================= -->
 <script>
 (function() {
