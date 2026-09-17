@@ -116,7 +116,7 @@
     max-width: 700px;
   }
 
-  /* ================= GRID CON DIAGRAMAS SVG ================= */
+  /* ================= GRID ================= */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -511,6 +511,281 @@
   .info-panel ul li::before { content: '▸'; position: absolute; left: 0; color: var(--fmp-green); font-weight: 700; }
   .info-panel ul li strong { color: var(--fmp-green-light); font-weight: 700; }
 
+  /* ================= FÓRMULAS Y TRAZABILIDAD ASTM ================= */
+  .formulas-section {
+    margin-top: clamp(30px, 5vw, 50px);
+    background: #0a0a0a;
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    border-radius: 16px;
+    padding: clamp(20px, 4vw, 40px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .formulas-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--fmp-green), transparent);
+    opacity: 0.7;
+  }
+
+  .formulas-section h2 {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .formulas-section h2 span { color: var(--fmp-green); }
+
+  .formulas-section > p {
+    text-align: center;
+    color: #a0a0a0;
+    margin-bottom: 30px;
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .formula-card {
+    background: #060606;
+    border: 1px solid rgba(57, 255, 20, 0.15);
+    border-left: 3px solid var(--fmp-green);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .formula-card:hover {
+    border-color: rgba(57, 255, 20, 0.5);
+    background: rgba(57, 255, 20, 0.03);
+    transform: translateX(4px);
+  }
+
+  .formula-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .formula-name {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--fmp-green-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .formula-astm {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(57, 255, 20, 0.12);
+    color: var(--fmp-green);
+    border: 1px solid rgba(57, 255, 20, 0.35);
+    white-space: nowrap;
+    font-family: 'Courier New', monospace;
+  }
+
+  .formula-math {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(0.78rem, 1.3vw, 0.88rem);
+    color: #baff72;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.6;
+  }
+
+  .formula-desc {
+    font-size: clamp(0.8rem, 1.3vw, 0.88rem);
+    color: #b0b0b0;
+    line-height: 1.55;
+  }
+
+  .formula-desc strong { color: var(--fmp-green-light); }
+
+  .formula-example {
+    font-size: 0.78rem;
+    color: #888;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(57, 255, 20, 0.15);
+    font-family: 'Courier New', monospace;
+  }
+
+  .formula-example .result {
+    color: var(--fmp-green);
+    font-weight: 700;
+  }
+
+  /* ================= EJEMPLOS VISUALES ASTM ================= */
+  .examples-section {
+    margin-top: clamp(30px, 5vw, 50px);
+    background: #0a0a0a;
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    border-radius: 16px;
+    padding: clamp(20px, 4vw, 40px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .examples-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--fmp-green), transparent);
+    opacity: 0.7;
+  }
+
+  .examples-section h2 {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .examples-section h2 span { color: var(--fmp-green); }
+
+  .examples-section > p {
+    text-align: center;
+    color: #a0a0a0;
+    margin-bottom: 30px;
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 20px;
+  }
+
+  .example-card {
+    background: #060606;
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .example-card:hover {
+    border-color: var(--fmp-green);
+    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .example-card .ex-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--fmp-green-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+  }
+
+  .example-svg {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 15px;
+    background: #0a0a0a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .example-svg svg { width: 100%; height: 100%; }
+
+  @keyframes dropFall {
+    0% { transform: translateY(-20px); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(50px); opacity: 0; }
+  }
+
+  @keyframes particleSpread {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(var(--dx, 8px), var(--dy, -4px)); }
+  }
+
+  @keyframes particleClose {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(var(--cx, -6px), var(--cy, 4px)); }
+  }
+
+  @keyframes dollarPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes resistanceGrow {
+    from { width: 40%; }
+    to { width: 85%; }
+  }
+
+  .drop-anim { animation: dropFall 2s infinite ease-in; }
+  .drop-anim:nth-child(2) { animation-delay: 0.4s; }
+  .drop-anim:nth-child(3) { animation-delay: 0.8s; }
+  .particle-spread { animation: particleSpread 3s infinite ease-in-out; }
+  .particle-close { animation: particleClose 3s infinite ease-in-out; }
+  .dollar-anim { animation: dollarPulse 1.5s infinite ease-in-out; }
+  .dollar-anim:nth-child(2) { animation-delay: 0.3s; }
+  .dollar-anim:nth-child(3) { animation-delay: 0.6s; }
+
+  .example-card .ex-desc {
+    font-size: 0.82rem;
+    color: #b0b0b0;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .example-card .ex-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .example-card .ex-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    background: rgba(57, 255, 20, 0.1);
+    color: var(--fmp-green);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .example-card .ex-tag.cost {
+    background: rgba(255, 170, 0, 0.12);
+    color: #ffaa00;
+    border-color: rgba(255, 170, 0, 0.4);
+  }
+
   /* ================= SECCIÓN XR ================= */
   .xr-access-section {
     margin-top: clamp(30px, 5vw, 50px);
@@ -625,7 +900,7 @@
     </div>
   </div>
 
-  <!-- ================= TARJETAS CON DIAGRAMAS SVG ================= -->
+  <!-- ================= TARJETAS ================= -->
   <div class="grid">
 
     <div class="card">
@@ -730,7 +1005,6 @@
     <h2>Simulador de <span>Dosificación</span></h2>
     <p>Ajusta los parámetros o presiona un preset para cargar los valores óptimos ASTM C494.</p>
 
-    <!-- Presets -->
     <div class="preset-selector" id="presetSelector">
       <button class="preset-btn active" data-preset="estandar">Estándar</button>
       <button class="preset-btn" data-preset="alta">Alta Resistencia</button>
@@ -740,14 +1014,12 @@
       <button class="preset-btn" data-preset="escultura">Escultura</button>
     </div>
 
-    <!-- Tipo -->
     <div class="type-selector" id="typeSelector">
       <button class="type-btn active" data-type="A">Tipo A</button>
       <button class="type-btn" data-type="D">Tipo D</button>
       <button class="type-btn" data-type="E">Tipo E</button>
     </div>
 
-    <!-- Sliders -->
     <div class="sliders-grid">
       <div class="slider-group" id="sg-water">
         <label><span>Reducción de agua</span><span class="value" id="waterValue">-8%</span></label>
@@ -767,14 +1039,12 @@
       </div>
     </div>
 
-    <!-- Balance -->
     <div class="balance-bar">
       <span class="balance-label">Balance general</span>
       <div class="balance-track"><div class="balance-fill" id="balanceFill" style="width: 70%"></div></div>
       <span class="balance-status" id="balanceStatus">Óptimo</span>
     </div>
 
-    <!-- Gráfico -->
     <div class="chart-container">
       <div class="chart-title">Propiedades Físico-Químicas de la Mezcla</div>
       <div class="chart">
@@ -816,7 +1086,6 @@
       </div>
     </div>
 
-    <!-- Receta -->
     <div class="recipe-card">
       <div class="recipe-header">
         <span class="recipe-title">Receta en vivo</span>
@@ -842,7 +1111,6 @@
       </div>
     </div>
 
-    <!-- Paneles -->
     <div class="info-panels">
       <div class="info-panel">
         <h4>🏗️ Aplicaciones Recomendadas</h4>
@@ -859,15 +1127,211 @@
     </div>
   </div>
 
+  <!-- ================= FÓRMULAS Y TRAZABILIDAD ASTM ================= -->
+  <div class="formulas-section">
+    <h2>Fórmulas y <span>Trazabilidad ASTM C494</span></h2>
+    <p>Cada cálculo del simulador está respaldado por la norma. Aquí te mostramos el origen, la fórmula exacta y un ejemplo.</p>
+
+    <div class="formula-card">
+      <div class="formula-header">
+        <span class="formula-name">Ley de Abrams — Resistencia</span>
+        <span class="formula-astm">ASTM C39 / C494 §10</span>
+      </div>
+      <div class="formula-math">f'c = A / B^(a/c)     →     f'c = 100 / 10^(a/c)
+
+Con a/c = 0.45 → f'c = 35.4 MPa → 100% (referencia)
+A = 100 MPa, B = 10 (constantes empíricas)</div>
+      <div class="formula-desc">
+        La <strong>Ley de Abrams</strong> (1918) es el principio fundamental: a menor relación agua/cemento, mayor resistencia. El simulador normaliza el resultado a 100% para a/c = 0.45.
+      </div>
+      <div class="formula-example">Ejemplo: a/c = 0.45 → 35.4 MPa → <span class="result">100%</span> · a/c = 0.35 → 87.4 MPa → <span class="result">247%</span></div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-header">
+        <span class="formula-name">Reducción de Agua Mínima</span>
+        <span class="formula-astm">ASTM C494 §6.1 Tabla 1</span>
+      </div>
+      <div class="formula-math">Reductor (Tipo A):   ≥ 5% reducción
+Retardante (Tipo D): ≥ 5% reducción
+Acelerante (Tipo E): ≥ 5% reducción
+
+Rango práctico: 5% – 12%</div>
+      <div class="formula-desc">
+        La norma exige una reducción <strong>mínima del 5%</strong> en el agua de mezclado para clasificar un aditivo como reductor. El simulador usa el rango 0-15% para mostrar la variabilidad práctica.
+      </div>
+      <div class="formula-example">Límite ASTM: <span class="result">5%</span> · Óptimo industrial: <span class="result">8-10%</span></div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-header">
+        <span class="formula-name">Dosis Típica de Aditivo</span>
+        <span class="formula-astm">ASTM C494 §6.2 Tabla 2</span>
+      </div>
+      <div class="formula-math">Tipo A: 2–6 oz/cwt (0.13 – 0.39% cem)
+Tipo D: 5–8 oz/cwt (0.32 – 0.52% cem)
+Tipo E: 2–6 oz/cwt (0.13 – 0.39% cem)
+
+1 oz/cwt ≈ 0.065% por peso de cemento</div>
+      <div class="formula-desc">
+        La dosis se expresa en <strong>oz/cwt</strong> (onzas por 100 lb de cemento). El simulador usa 0–2.0% para cubrir desde subdosis hasta sobredosis.
+      </div>
+      <div class="formula-example">Óptimo Tipo A: <span class="result">0.26%</span> · Óptimo Tipo D/E: <span class="result">0.39%</span></div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-header">
+        <span class="formula-name">Retardo de Fraguado — Tipo D</span>
+        <span class="formula-astm">ASTM C494 §8.2</span>
+      </div>
+      <div class="formula-math">Tiempo fraguado Tipo D = Normal + 2 a 3.5 h
+
+Límite máximo: 3.5 h sobre el testigo
+Límite mínimo: 1 h sobre el testigo</div>
+      <div class="formula-desc">
+        El <strong>Tipo D</strong> debe retrasar el fraguado al menos 1 hora y no más de 3.5 h. El simulador convierte el valor 0–100 a horas lineales dentro de ese rango.
+      </div>
+      <div class="formula-example">Valor 50 → <span class="result">Normal</span> · Valor 80 → <span class="result">+2.1 h</span> · Valor 100 → <span class="result">+3.5 h</span></div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-header">
+        <span class="formula-name">Resistencia Temprana — Tipo E</span>
+        <span class="formula-astm">ASTM C494 §8.1 Tabla 3</span>
+      </div>
+      <div class="formula-math">Resistencia 3 días:  ≥ 125% del testigo
+Resistencia 7 días:  ≥ 100% del testigo
+Resistencia 28 días: ≥ 100% del testigo</div>
+      <div class="formula-desc">
+        El <strong>Tipo E</strong> debe desarrollar al menos <strong>125% de la resistencia a 3 días</strong> del concreto de referencia. El simulador aplica un boost del 15% para reflejar este comportamiento.
+      </div>
+      <div class="formula-example">Boost aplicado: <span class="result">×1.15</span> · A 3 días equivale a <span class="result">125% ASTM</span></div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-header">
+        <span class="formula-name">Punto de Saturación</span>
+        <span class="formula-astm">ASTM C494 §A1.4 (Nota)</span>
+      </div>
+      <div class="formula-math">Reducción de agua ∝ log(dosis)
+
+A partir de dosis > 1.5% el incremento
+de fluidez es marginal: saturación.</div>
+      <div class="formula-desc">
+        La norma advierte que los reductores tienen un <strong>punto de saturación</strong> donde ya no logran mayor reducción de agua. Sobredosificar causa retardo extremo y sangrado. El simulador penaliza con barras rojas al superar el 1.5%.
+      </div>
+      <div class="formula-example">Zona óptima: <span class="result">0.8% – 1.4%</span> · Saturación: <span class="result">&gt;1.8%</span></div>
+    </div>
+
+  </div>
+
+  <!-- ================= EJEMPLOS VISUALES ================= -->
+  <div class="examples-section">
+    <h2>Ejemplos Visuales <span>ASTM C494 Tipo A, D y E</span></h2>
+    <p>Las tres estrategias clásicas de dosificación con reductores de agua. Compara cómo cambian fluidez, resistencia y costo.</p>
+
+    <div class="examples-grid">
+
+      <div class="example-card">
+        <div class="ex-title">1. Solo agregar plastificante</div>
+        <div class="example-svg">
+          <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
+            <rect x="20" y="120" width="260" height="40" fill="#1a1a1a" stroke="#39ff14" stroke-width="1"/>
+            <circle class="drop-anim" cx="80" cy="80" r="4" fill="#39ff14"/>
+            <circle class="drop-anim" cx="80" cy="80" r="3" fill="#baff72"/>
+            <circle class="drop-anim" cx="80" cy="80" r="2" fill="#ffffff"/>
+            <circle class="particle-spread" cx="150" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5"/>
+            <circle class="particle-spread" cx="180" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--dx:12px;--dy:-6px"/>
+            <circle class="particle-spread" cx="210" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--dx:-8px;--dy:-8px"/>
+            <circle class="particle-spread" cx="240" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--dx:10px;--dy:-4px"/>
+            <text x="20" y="30" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">a/mc = IGUAL</text>
+            <text x="20" y="48" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Fluidez ↑↑</text>
+            <text x="20" y="66" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Resistencia = IGUAL</text>
+            <text x="220" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
+            <text x="240" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
+            <text x="260" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
+          </svg>
+        </div>
+        <p class="ex-desc">Agregar plastificante sin tocar agua ni cemento. Mejora la fluidez, mantiene a/mc y resistencia, pero cuesta más.</p>
+        <div class="ex-tags">
+          <span class="ex-tag">a/mc = igual</span>
+          <span class="ex-tag">Fluidez ↑↑</span>
+          <span class="ex-tag cost">$$$</span>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <div class="ex-title">2. Plastificante + reducir agua</div>
+        <div class="example-svg">
+          <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
+            <rect x="20" y="120" width="260" height="40" fill="#1a1a1a" stroke="#39ff14" stroke-width="1"/>
+            <line x1="40" y1="110" x2="120" y2="110" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="4 2"/>
+            <text x="40" y="102" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700">Agua reducida</text>
+            <circle class="particle-close" cx="150" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5"/>
+            <circle class="particle-close" cx="172" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--cx:-6px;--cy:-4px"/>
+            <circle class="particle-close" cx="194" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--cx:4px;--cy:6px"/>
+            <circle class="particle-close" cx="216" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--cx:-5px;--cy:5px"/>
+            <circle class="particle-close" cx="238" cy="140" r="6" fill="none" stroke="#39ff14" stroke-width="1.5" style="--cx:6px;--cy:-4px"/>
+            <rect x="40" y="40" width="60" height="8" fill="none" stroke="#39ff14" stroke-width="1"/>
+            <rect x="40" y="40" width="51" height="8" fill="#39ff14" opacity="0.8" style="animation: resistanceGrow 3s infinite alternate ease-in-out"/>
+            <text x="110" y="48" fill="#39ff14" font-family="Inter" font-size="9" font-weight="700">Resistencia ↑↑</text>
+            <text x="20" y="30" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">a/mc ↓↓</text>
+            <text x="20" y="66" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Fluidez = IGUAL</text>
+            <text x="220" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
+            <text x="240" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
+            <text x="260" y="30" class="dollar-anim" fill="#ffaa00" font-family="Inter" font-size="18" font-weight="900">$</text>
+          </svg>
+        </div>
+        <p class="ex-desc">Plastificante + reducir agua. Menor a/mc, misma fluidez, mayor resistencia. Sigue costando igual.</p>
+        <div class="ex-tags">
+          <span class="ex-tag">a/mc ↓↓</span>
+          <span class="ex-tag">Fluidez =</span>
+          <span class="ex-tag">Resist. ↑↑</span>
+          <span class="ex-tag cost">$$$</span>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <div class="ex-title">3. Plastificante + menos agua + menos cemento</div>
+        <div class="example-svg">
+          <svg viewBox="0 0 300 180" preserveAspectRatio="xMidYMid meet">
+            <rect x="20" y="130" width="260" height="30" fill="#1a1a1a" stroke="#39ff14" stroke-width="1"/>
+            <line x1="40" y1="120" x2="100" y2="120" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="4 2"/>
+            <text x="40" y="112" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700">Agua ↓</text>
+            <line x1="180" y1="120" x2="240" y2="120" stroke="#ff4d4d" stroke-width="2" stroke-dasharray="4 2"/>
+            <text x="180" y="112" fill="#ff4d4d" font-family="Inter" font-size="9" font-weight="700">Cemento ↓</text>
+            <circle cx="140" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
+            <circle cx="160" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
+            <circle cx="180" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
+            <circle cx="200" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
+            <circle cx="220" cy="145" r="5" fill="none" stroke="#39ff14" stroke-width="1.5"/>
+            <text x="20" y="30" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">a/mc = IGUAL</text>
+            <text x="20" y="48" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Fluidez = IGUAL</text>
+            <text x="20" y="66" fill="#39ff14" font-family="Inter" font-size="10" font-weight="700">Resistencia = IGUAL</text>
+            <text x="240" y="30" class="dollar-anim" fill="#39ff14" font-family="Inter" font-size="18" font-weight="900">$</text>
+          </svg>
+        </div>
+        <p class="ex-desc">Plastificante + menos agua + menos cemento. Mismas propiedades con menor costo. La estrategia de optimización por excelencia.</p>
+        <div class="ex-tags">
+          <span class="ex-tag">a/mc =</span>
+          <span class="ex-tag">Fluidez =</span>
+          <span class="ex-tag">Resist. =</span>
+          <span class="ex-tag cost">$</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ================= SECCIÓN XR ================= -->
   <div class="xr-access-section">
     <div class="xr-info">
-      <div class="xr-label">Experiencia Inmersiva</div>
-      <h2>Accede a la <span>Demo XR</span> de FormMatterPrime</h2>
-      <p>Escanea el código QR o visita el enlace para explorar nuestra plataforma interactiva de visualización 3D/4D aplicada a los aditivos ASTM C494.</p>
+      <div class="xr-label">Experiencia Inmersiva — Superplastificantes</div>
+      <h2>Explora <span>Isoflow e Isoflex</span> en Realidad Extendida</h2>
+      <p>Los <strong>reductores de agua de alto rango</strong> (ASTM C494 Tipo F y G) permiten reducciones superiores al 12% y producen concretos autocompactantes, arquitectónicos y de alta fluidez. Nuestra demo XR te muestra cómo fluyen y llenan moldes en tiempo real.</p>
       <a class="xr-link" href="https://casgon.github.io/BROCHURE/" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6Zm11-3v8h-8V3h8Zm-2 2h-4v4h4V5Z"/></svg>
-        Abrir Experiencia XR
+        Abrir Demo Isoflow / Isoflex
       </a>
     </div>
     <div class="qr-block">
@@ -1059,7 +1523,7 @@ if (container) {
 </script>
 
 <!-- =========================================================
-     Simulador con valores óptimos por tipo/preset
+     Simulador ASTM C494 con valores óptimos
      ========================================================= -->
 <script>
 (function() {
@@ -1108,14 +1572,14 @@ if (container) {
   function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
   function flash(el) { el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
 
-  // ═══ Valores óptimos ASTM C494 por tipo de aditivo ═══
+  // ═══ Valores óptimos ASTM C494 por tipo ═══
   const ASTM_OPTIMOS = {
-    A: { water: 8, aditivo: 10, ac: 45, temp: 20 },   // 1.0% típico
-    D: { water: 8, aditivo: 13, ac: 45, temp: 28 },   // 1.3% retardante
-    E: { water: 8, aditivo: 13, ac: 45, temp: 8  }    // 1.3% acelerante
+    A: { water: 8, aditivo: 10, ac: 45, temp: 20 },
+    D: { water: 8, aditivo: 13, ac: 45, temp: 28 },
+    E: { water: 8, aditivo: 13, ac: 45, temp: 8  }
   };
 
-  // ═══ Presets de mezclas (valores óptimos por aplicación) ═══
+  // ═══ Presets de mezclas ═══
   const PRESETS = {
     estandar:       { water: 8,  aditivo: 10, ac: 45, temp: 20 },
     alta:           { water: 12, aditivo: 14, ac: 35, temp: 20 },
@@ -1160,7 +1624,6 @@ if (container) {
     updateSliderFill(sgAc, acSlider);
     updateSliderFill(sgTemp, tempSlider);
 
-    // Fluidez
     let fluidez = 40 + water * 3 + (aditivo - 1) * 25 + (ac - 0.45) * 200;
     if (currentType === 'A') fluidez += 5;
     if (currentType === 'D') fluidez += 8;
@@ -1168,13 +1631,11 @@ if (container) {
     if (currentPreset === 'autocompactante') fluidez += 20;
     fluidez = clamp(fluidez, 5, 100);
 
-    // Viscosidad
     let viscosidad = 60 - water * 2.5 - (aditivo - 1) * 15 + (0.45 - ac) * 100;
     if (currentType === 'E') viscosidad += 10;
     if (currentPreset === 'autocompactante') viscosidad -= 15;
     viscosidad = clamp(viscosidad, 5, 100);
 
-    // Fraguado (50 = normal)
     let fraguado = 50 - water * 1.5 + (aditivo - 1) * 3;
     if (currentType === 'D') fraguado += 30;
     if (currentType === 'E') fraguado -= 30;
@@ -1182,7 +1643,6 @@ if (container) {
     if (temp < 10) fraguado += (10 - temp) * 1.2;
     fraguado = clamp(fraguado, 5, 100);
 
-    // Resistencia (Ley de Abrams simplificada)
     const A = 100, B = 10;
     let resistenciaMPa = A / Math.pow(B, ac);
     let resistencia = (resistenciaMPa / 35) * 100;
@@ -1191,21 +1651,18 @@ if (container) {
     if (currentPreset === 'alta') resistencia *= 1.15;
     resistencia = clamp(resistencia, 60, 130);
 
-    // Exudación
     let exudacion = 30 + water * 3 - (aditivo - 1) * 12;
     if (currentType === 'A') exudacion += 8;
     if (currentType === 'E') exudacion -= 10;
     if (currentPreset === 'autocompactante') exudacion -= 15;
     exudacion = clamp(exudacion, 3, 100);
 
-    // Detalle en molde
     let detalle = 30 + aditivo * 20 + (ac - 0.40) * 80;
     if (currentType === 'D') detalle += 15;
     if (currentType === 'E') detalle -= 8;
     if (currentPreset === 'escultura') detalle += 25;
     detalle = clamp(detalle, 5, 100);
 
-    // Bombeabilidad
     let bombeo = 50 + (aditivo - 1) * 20 + (ac - 0.45) * 150 - water * 1;
     if (currentPreset === 'masivo') bombeo -= 10;
     if (currentPreset === 'autocompactante') bombeo += 20;
@@ -1247,7 +1704,6 @@ if (container) {
     recipeStatus.textContent = status;
     recipeStatus.className = 'recipe-status ' + statusClass;
 
-    // Receta
     riTipo.textContent = 'Tipo ' + currentType;
     riDosis.textContent = aditivo.toFixed(1) + '% × cem';
     if (currentType === 'D') {
@@ -1324,13 +1780,11 @@ if (container) {
     aplicList.innerHTML = aplic.join('');
   }
 
-  // Listeners
   waterSlider.addEventListener('input', update);
   aditivoSlider.addEventListener('input', update);
   acSlider.addEventListener('input', update);
   tempSlider.addEventListener('input', update);
 
-  // Al cambiar tipo ASTM → cargar valores óptimos de ese tipo
   typeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       typeButtons.forEach(b => b.classList.remove('active'));
@@ -1340,7 +1794,6 @@ if (container) {
     });
   });
 
-  // Al cambiar preset de mezcla → cargar valores óptimos de esa mezcla
   presetButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       presetButtons.forEach(b => b.classList.remove('active'));
@@ -1350,7 +1803,6 @@ if (container) {
     });
   });
 
-  // Inicial
   update();
 })();
 </script>
